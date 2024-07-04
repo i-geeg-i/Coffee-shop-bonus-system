@@ -1,0 +1,9 @@
+.main_div {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.items_div {
+    justify-content: left;
+}

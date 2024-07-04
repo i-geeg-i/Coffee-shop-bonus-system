@@ -1,0 +1,22 @@
+.text_field {
+    background-color: #E7EFB5;
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+
+    width: 95%;
+    align-self: center;
+
+    border-radius: 20;
+
+    padding: 0.5rem;
+
+    justify-content: center;
+    justify-self: center;
+}
+
+div.text-field h2 {
+    font-weight: bold;
+}
