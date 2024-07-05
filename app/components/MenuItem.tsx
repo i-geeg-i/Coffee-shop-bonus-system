@@ -1,3 +1,4 @@
+import Link from "next/link"
 import styles from "./css/MenuItem.module.css"
 
 type Props = {
@@ -11,7 +12,13 @@ export default function MenuItem(props : Props) {
 
     return (
         <div className={styles.menu_item}>
-            <a href={"/menu/" + props.id.toLocaleString()}><img className={styles.item_pic} src={props.picSrc}></img></a>
+            <Link href = {{ pathname: "/menu/" + props.id.toLocaleString(),
+                    query: {
+                        picSrc: props.picSrc,
+                        price: props.price,
+                        name: props.name }}}>
+            <img className={styles.item_pic} src={props.picSrc}></img>
+            </Link>
             <p className={styles.item_name}>{props.name}</p>
             <button className={styles.price_btn}>{props.price + " ₽"}</button>
         </div>
