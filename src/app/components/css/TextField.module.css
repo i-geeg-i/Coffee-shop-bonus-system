@@ -6,7 +6,12 @@
     font-style: normal;
     text-align: center;
 
-    width: 95%;
+    box-shadow: 3px 3px 10px gray;
+
+    margin-left: 30%;
+    margin-right: 30%;
+
+    width: auto;
     align-self: center;
 
     border-radius: 20;

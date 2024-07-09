@@ -9,8 +9,9 @@
   text-align: center;
   /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
-.footer {
-  background-color: rgb(137, 137, 137);
+body {
+
+  margin: 0;
 }
 .header {
   background-color: rgb(99, 239, 153);
