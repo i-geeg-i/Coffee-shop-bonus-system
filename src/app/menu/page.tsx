@@ -5,7 +5,7 @@ import MenuItem from "../components/MenuItem";
 
 export default function Menu() {
     return( <div>
-        {/* <h1 className="main-title">Menu</h1> */}
+
         <div className={styles.main_div}>
         <TextField header="Here is our menu!" text="By the way, you may order it from website" />
         <div className={styles.items_div}>
@@ -16,7 +16,6 @@ export default function Menu() {
         <MenuItem picSrc="/croissant.jpg" name="Croissant" id={5} price={69} />
         </div>
         </div>
-        <Link href="/">Go back</Link>
         </div>
     )
 }
