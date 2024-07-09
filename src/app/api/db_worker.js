@@ -80,20 +80,20 @@ export async function addItem(name, description, img, price) {
     }
 }
 
-export async function getItem(name) {
-    sql = 'SELECT * FROM items WHERE name = ?';
+export async function getItem(id) {
+    sql = 'SELECT * FROM items WHERE id = ?';
     try {
-        const rows = await getQuery(sql, [name]);
+        const rows = await getQuery(sql, [id]);
         return rows[0];
     } catch (err) {
         console.error(err.message);
     }
 }
 
-export async function deleteItem(name) {
-    sql = 'DELETE FROM items WHERE name = ?';
+export async function deleteItem(id) {  
+    sql = 'DELETE FROM items WHERE id = ?';
     try {
-        await runQuery(sql, [name]);
+        await runQuery(sql, [id]);
     } catch (err) {
         console.error(err.message);
     }

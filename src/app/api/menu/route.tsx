@@ -1,5 +1,8 @@
 import * as db from '../db_worker';
-export async function GET(){
-    let products : string[]  = await db.getMenu() as string[];
-    return Response.json({products});
+
+export async function GET() {
+    let products = await db.getMenu();
+    return new Response(JSON.stringify(products), {
+        headers: { 'Content-Type': 'application/json' }
+    });
 }

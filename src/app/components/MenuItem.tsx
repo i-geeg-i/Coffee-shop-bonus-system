@@ -12,11 +12,7 @@ export default function MenuItem(props : Props) {
 
     return (
         <div className={styles.menu_item}>
-            <Link href = {{ pathname: "/menu/" + props.id.toLocaleString(),
-                    query: {
-                        picSrc: props.picSrc,
-                        price: props.price,
-                        name: props.name }}}>
+            <Link href = {{ pathname: "/menu/" + props.id.toLocaleString()}}> 
             <img className={styles.item_pic} src={props.picSrc}></img>
             </Link>
             <p className={styles.item_name}>{props.name}</p>

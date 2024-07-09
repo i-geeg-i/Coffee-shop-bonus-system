@@ -3,18 +3,38 @@ import { headers } from 'next/headers';
 import { NextResponse } from "next/server";
 export async function GET(){
     const headersList = headers()
-    const name = headersList.get('name');
-    let item : string  = await db.getItem(name) as string;
-    return Response.json({item});
+    const id = headersList.get('id');
+    // console.log(id);
+    if (id == null){
+      return NextResponse.json({
+        message: "Specify id"
+      }, {
+        status: 400,
+      })
+    }
+    let item : string  = await db.getItem(id) as string;
+    // console.log(item);
+    if (item == undefined){
+      return NextResponse.json({
+        message: "No such item"
+      }, {
+        status: 400,
+      })
+    }
+    return NextResponse.json(
+      item,
+      {
+      status: 200,
+    })
 }
 export async function POST(request: Request){
     
-    const userData = await request.json();
-    console.log(userData);
-    const name : string = userData['name'];
-    const description : string = userData['description'];
-    const img : string = userData['img'];
-    const price : string = userData['price'];
+    const Data = await request.json();
+    // console.log(Data);
+    const name : string = Data['name'];
+    const description : string = Data['description'];
+    const img : string = Data['img'];
+    const price : string = Data['price'];
     const resp: boolean = await db.addItem(name, description, img, price) as boolean;
     if (!resp){
         return NextResponse.json({
@@ -32,21 +52,21 @@ export async function POST(request: Request){
 
 export async function DELETE(request: Request){
     
-    const userData = await request.json();
-    console.log(userData);
-    const name : string = userData['name'];
-    db.deleteItem(name);
-    return Response.json(name);
+  const headersList = headers()
+  const id = headersList.get('id');
+    db.deleteItem(id);
+    return Response.json(id);
 }
 
 export async function PATCH(request: Request) {
     const userData = await request.json();
-    console.log(userData);
+    // console.log(userData);
+    const id : string = userData['id'];
     const name : string = userData['name'];
     const description : string = userData['description'];
     const img : string = userData['img'];
     const price : string = userData['price'];
-    await db.deleteItem(name);
+    await db.deleteItem(id);
     const resp: boolean = await db.addItem(name, description, img, price) as boolean;
     if (!resp){
         return NextResponse.json({

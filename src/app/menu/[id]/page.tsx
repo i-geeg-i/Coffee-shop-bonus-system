@@ -1,32 +1,28 @@
-'use client'
+'use server'
+import Item from '../../components/item'; // Adjust the path as necessary
 
-import Link from "next/link";
-import styles from "./item.module.css"
-import { useSearchParams  } from 'next/navigation'
-type Props = {
-    params: {
-        id: string;
-    };
-};
-
-export default function Item({params: {id}}: Props) {
-    const searchParams = useSearchParams();
-
-    const name : string = searchParams.get('name') as string;
-    const picSrc : string  = searchParams.get('picSrc') as string;
-    const price : string  = searchParams.get('price') as string;
-    return <>
-    <Link href="/menu"><img src="/back.png" className={styles.go_back_btn}></img></Link>
-    <div className={styles.main_block}>
-        <div className={styles.left_block}>
-            <img className={styles.item_pic} src={picSrc}></img>
-        </div>
-        <div className={styles.right_block}>
-            <h1 className="item">{name}</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at accumsan lectus. Etiam non imperdiet tellus, et molestie nisl. Suspendisse nibh nibh, malesuada et magna vitae, cursus pellentesque magna. Curabitur id lectus sed enim venenatis sagittis. In mattis tellus eleifend, cursus metus luctus, pretium magna. Suspendisse pulvinar sit amet sapien et venenatis. Pellentesque pretium, urna ut porta dictum, nisi purus hendrerit orci, eu ullamcorper purus eros sit amet quam. Cras ullamcorper velit felis, vitae viverra diam dictum imperdiet. Aenean sodales porta diam at imperdiet. Praesent id aliquet nunc, a auctor urna. Fusce pharetra ut ex in faucibus.</p>
-            <button className={styles.price_btn}>{price + " ₽"}</button>
-        </div>
-        
-    </div>
-    </>;
+export default async function ItemPage({ params }: { params: { id: string } }) {
+    const { id } = params;
+    let res = await fetch(`http://localhost:3000/api/item`, {
+        method: 'GET',
+        headers: new Headers({
+            'Authorization': 'Basic',
+            "id": id
+        })
+    });
+    if (!res.ok) {
+        // Handle errors here, e.g., by returning an error page or logging
+        console.log("There is some trouble with item. Get next response: " + await res.json())
+        return <div>No such item</div>
+    }
+    let data = await res.json();
+    return (
+        <Item data={{
+            id: data.id,
+            name: data.name,
+            picSrc: data.img,
+            price: data.price,
+            description: data.description
+        }} />
+    );
 }
