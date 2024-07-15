@@ -2,6 +2,7 @@ import Footer from "@/src/app/components/Footer";
 import Header from "@/src/app/components/Header";
 import './globals.css'
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Coffee in",
@@ -22,6 +23,7 @@ export default function RootLayout({
     </head>
       <body>
         <Header />
+        <button className="cart_btn"><Link href="/menu/cart"><img src="/cart.svg" /></Link></button>
         <main>
         {children}
         </main>

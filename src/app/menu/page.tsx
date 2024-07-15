@@ -1,4 +1,6 @@
+import Link from "next/link";
 import Menu from "../components/Menu";
+import styles from "./menu.module.css"
 
 export default async function MenuPage() {
     let res = await fetch(`http://localhost:3000/api/menu`, {
@@ -23,6 +25,9 @@ export default async function MenuPage() {
     }
 
     return (
+        <>
+        
         <Menu products={data} />  // Pass the products array to Menu component
+        </>
     );
 }
