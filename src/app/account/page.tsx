@@ -1,5 +1,5 @@
-import AccountForm from '../components/AccountForm'
-import { createClient } from '../utils/supabase/server'
+import { createClient } from '../../supabase/server'
+import FreeDrinkComponent from '../components/FreeDrinkComponent'
 
 export default async function Account() {
   const supabase = createClient()
@@ -8,5 +8,16 @@ export default async function Account() {
     data: { user },
   } = await supabase.auth.getUser()
 
-  return <AccountForm user={user} />
+  const { data, error } = await supabase.from("profiles").select().eq('id', user?.id);
+  if (error) {
+    console.log({ error: error.message });
+   } else {
+     const profile = data[0];
+     console.log(profile)
+     return (
+      <>
+      <FreeDrinkComponent {...profile} />
+      </>
+    )
+   }
 }

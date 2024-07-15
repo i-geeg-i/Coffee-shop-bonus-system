@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { createClient } from '../utils/supabase/server'
+import { createClient } from '../../supabase/server'
 
 export async function login(formData: FormData) {
   const supabase = createClient()
@@ -18,8 +18,7 @@ export async function login(formData: FormData) {
     return("Wrong email or password")
 
   } else if (error){
-    console.log(error)
-    redirect('/error')
+    return("Error: " + error.status)
   }
 
   revalidatePath('/', 'layout')
@@ -33,19 +32,20 @@ export async function signup(formData: FormData) {
   const data = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
+    name: formData.get('name') as string
   }
 
-  const { error } = await supabase.auth.signUp(data)
+  const { error } = await supabase.auth.signUp(data);
 
 
   if (error?.status == 422) {
-    return(alert("Password should be at least 6 characters."))
-  } else if (error?.status === 429) {
-      // alert("Check your email")
-      redirect('/emailIsSent')
-    } else if (error) {
-      redirect('/error')
+    return("Password should be at least 6 characters.")
+  } else if (error) {
+      return("Error: " + error.status)
     } else {
+      const id = (await supabase.auth.getUser()).data.user?.id;
+
+      await supabase.from('profiles').update({full_name: data.name}).eq("id", id)
       revalidatePath('/', 'layout')
       redirect('/account')
     }

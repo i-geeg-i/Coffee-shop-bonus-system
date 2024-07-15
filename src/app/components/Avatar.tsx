@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { createClient } from '../utils/supabase/client'
+import { createClient } from '../../supabase/client'
 import Image from 'next/image'
 
 export default function Avatar({
@@ -63,7 +63,7 @@ export default function Avatar({
   }
 
   return (
-    <div>
+    <div style={{margin: "10%"}}>
       {avatarUrl ? (
         <Image
           width={size}
@@ -77,7 +77,7 @@ export default function Avatar({
         <div className="avatar no-image" style={{ height: size, width: size }} />
       )}
       <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
+        <label className="button primary block" htmlFor="single" style={{margin: "auto", width: size}}>
           {uploading ? 'Uploading ...' : 'Upload Photo'}
         </label>
         <input
