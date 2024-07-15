@@ -1,21 +1,36 @@
 "use client";
-import  "./auth.css"
+import "./css/Login.css";
 import { useState } from 'react';
+import { login, signup } from './actions';
 
-const Auth = () => {
+const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    //  авторизация
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+    const response = await login(formData);
+    if (response){
+      alert(response);
+    }
   };
 
-  const handleRegisterSubmit = (e: React.FormEvent) => {
+  const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // регистрация
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
+    await signup(formData);
+    
   };
 
   return (
@@ -71,4 +86,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Login;
