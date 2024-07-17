@@ -1,28 +1,33 @@
-'use server'
-import Item from '../../components/item'; // Adjust the path as necessary
+"use server";
+import Item from "../../components/item"; // Adjust the path as necessary
 
 export default async function ItemPage({ params }: { params: { id: string } }) {
-    const { id } = params;
-    let res = await fetch(`http://localhost:3000/api/item`, {
-        method: 'GET',
-        headers: new Headers({
-            'Authorization': 'Basic',
-            "id": id
-        })
-    });
-    if (!res.ok) {
-        // Handle errors here, e.g., by returning an error page or logging
-        console.log("There is some trouble with item. Get next response: " + await res.json())
-        return <div>No such item</div>
-    }
-    let data = await res.json();
-    return (
-        <Item data={{
-            id: data.id,
-            name: data.name,
-            picSrc: data.img,
-            price: data.price,
-            description: data.description
-        }} />
+  const { id } = params;
+  let res = await fetch(`http://localhost:3000/api/item`, {
+    method: "GET",
+    headers: new Headers({
+      Authorization: "Basic",
+      id: id,
+    }),
+  });
+  if (!res.ok) {
+    // Handle errors here, e.g., by returning an error page or logging
+    console.log(
+      "There is some trouble with item. Get next response: " +
+        (await res.json()),
     );
+    return <div>No such item</div>;
+  }
+  let data = await res.json();
+  return (
+    <Item
+      data={{
+        id: data.id,
+        name: data.name,
+        picSrc: data.img,
+        price: data.price,
+        description: data.description,
+      }}
+    />
+  );
 }

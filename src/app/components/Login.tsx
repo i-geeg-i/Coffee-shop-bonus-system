@@ -1,20 +1,20 @@
 "use client";
 import "./css/Login.css";
-import { useState } from 'react';
-import { login, signup } from './actions';
+import { useState } from "react";
+import { login, signup } from "./actions";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('email', email);
-    formData.append('password', password);
+    formData.append("email", email);
+    formData.append("password", password);
     const response = await login(formData);
     if (response) {
       alert(response);
@@ -24,22 +24,24 @@ const Login = () => {
   const handleRegisterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert('Passwords do not match');
+      alert("Passwords do not match");
       return;
     }
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('password', password);
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
     const response = await signup(formData);
     if (response) {
-      alert(response)
+      alert(response);
     }
   };
 
   return (
     <div className="form">
-      <h2 className="text-2xl font-bold text-center mb-6">{isLogin ? 'Login' : 'Register'}</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">
+        {isLogin ? "Login" : "Register"}
+      </h2>
       <form onSubmit={isLogin ? handleLoginSubmit : handleRegisterSubmit}>
         {!isLogin && (
           <div className="mb-4">
@@ -85,17 +87,20 @@ const Login = () => {
             />
           </div>
         )}
-        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
-          {isLogin ? 'Login' : 'Register'}
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
+          {isLogin ? "Login" : "Register"}
         </button>
       </form>
       <p className="mt-4 text-center">
-        {isLogin ? "Don't have an account?" : 'Already have an account?'}{' '}
+        {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
         <button
           onClick={() => setIsLogin(!isLogin)}
           className="text-blue-500 hover:underline"
         >
-          {isLogin ? 'Register' : 'Login'}
+          {isLogin ? "Register" : "Login"}
         </button>
       </p>
     </div>

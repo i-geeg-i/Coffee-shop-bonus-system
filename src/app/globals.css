@@ -10,7 +10,6 @@
   /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
 body {
-
   margin: 0;
 }
 .header {
@@ -33,7 +32,7 @@ body {
 }
 
 .button {
-  background-color: #a1c233; 
+  background-color: #a1c233;
   color: white;
   border: none;
   padding: 10px 20px;

@@ -1,17 +1,16 @@
-import AccountForm from '../components/AccountForm'
-import { createClient } from '../../supabase/server'
+import AccountForm from "../components/AccountForm";
+import { createClient } from "../../supabase/server";
 
 export default async function editProfile() {
-  const supabase = createClient()
+  const supabase = createClient();
 
   const {
     data: { user },
-  } = await supabase.auth.getUser()
+  } = await supabase.auth.getUser();
 
-
-     return (
-      <>
+  return (
+    <>
       <AccountForm user={user} />
-      </>
-    )
-   }
+    </>
+  );
+}
