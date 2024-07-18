@@ -10,7 +10,6 @@
   /* font-family: Georgia, 'Times New Roman', Times, serif; */
 }
 body {
-
   margin: 0;
 }
 .header {
@@ -46,11 +45,94 @@ body {
   margin-left: auto;
   position: absolute;
   right: 13%;
-  top: 15;
+  top: 15px;
   box-shadow: 3px 3px 10px gray;
 }
 
 .cart_btn img {
   width: 40px;
   height: 40px;
+}
+
+.button {
+  background-color: #a1c233;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.form-widget {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-form {
+  width: 60%;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button.primary {
+  background-color: #4caf50;
+  color: white;
+}
+
+.button.primary:hover {
+  background-color: #45a049;
+}
+
+.button.secondary {
+  background-color: #f44336;
+  color: white;
+  margin-left: 10px;
+}
+
+.button.secondary:hover {
+  background-color: #e53935;
 }

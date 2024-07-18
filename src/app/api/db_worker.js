@@ -1,9 +1,12 @@
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require("sqlite3").verbose();
 let sql;
-const db = new sqlite3.Database('./src/app/api/base.db', sqlite3.OPEN_READWRITE, (err) => {
+const db = new sqlite3.Database(
+  "./src/app/api/base.db",
+  sqlite3.OPEN_READWRITE,
+  (err) => {
     if (err) return console.error(err.message);
-});
-
+  },
+);
 
 // // CREATE
 // sql ='CREATE TABLE users(id INTEGER PRIMARY KEY, first_name,last_name,email,password)';
@@ -19,82 +22,83 @@ const db = new sqlite3.Database('./src/app/api/base.db', sqlite3.OPEN_READWRITE,
 // db.run(sql);
 
 function runQuery(sql, params = []) {
-    return new Promise((resolve, reject) => {
-        db.run(sql, params, function (err) {
-            if (err) reject(err);
-            else resolve(this);
-        });
+  return new Promise((resolve, reject) => {
+    db.run(sql, params, function (err) {
+      if (err) reject(err);
+      else resolve(this);
     });
+  });
 }
 
 function getQuery(sql, params = []) {
-    return new Promise((resolve, reject) => {
-        db.all(sql, params, (err, rows) => {
-            if (err) reject(err);
-            else resolve(rows);
-        });
+  return new Promise((resolve, reject) => {
+    db.all(sql, params, (err, rows) => {
+      if (err) reject(err);
+      else resolve(rows);
     });
+  });
 }
 
 export async function addUser(first_name, last_name, email, password) {
-    sql = 'INSERT INTO users(first_name, last_name, email, password) VALUES (?, ?, ?, ?)';
-    try {
-        await runQuery(sql, [first_name, last_name, email, password]);
-    } catch (err) {
-        console.error(err.message);
-    }
+  sql =
+    "INSERT INTO users(first_name, last_name, email, password) VALUES (?, ?, ?, ?)";
+  try {
+    await runQuery(sql, [first_name, last_name, email, password]);
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
 export async function getUser(email) {
-    sql = 'SELECT * FROM users WHERE email = ?';
-    try {
-        const rows = await getQuery(sql, [email]);
-        return rows[0];
-    } catch (err) {
-        console.error(err.message);
-    }
+  sql = "SELECT * FROM users WHERE email = ?";
+  try {
+    const rows = await getQuery(sql, [email]);
+    return rows[0];
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
 export async function getMenu() {
-    sql = 'SELECT * FROM items';
-    try {
-        const rows = await getQuery(sql);
-        console.log(rows);
-        return rows;
-    } catch (err) {
-        console.error(err.message);
-    }
+  sql = "SELECT * FROM items";
+  try {
+    const rows = await getQuery(sql);
+    console.log(rows);
+    return rows;
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
 export async function addItem(name, description, img, price) {
-    if (await getItem(name) != null){
-        return false;
-    }
-    sql = 'INSERT INTO items(name, description, img, price) VALUES (?, ?, ?, ?)';
-    try {
-        await runQuery(sql, [name, description, img, price]);
-        return true;
-    } catch (err) {
-        console.error(err.message);
-        return false;
-    }
+  if ((await getItem(name)) != null) {
+    return false;
+  }
+  sql = "INSERT INTO items(name, description, img, price) VALUES (?, ?, ?, ?)";
+  try {
+    await runQuery(sql, [name, description, img, price]);
+    return true;
+  } catch (err) {
+    console.error(err.message);
+    return false;
+  }
 }
 
 export async function getItem(id) {
-    sql = 'SELECT * FROM items WHERE id = ?';
-    try {
-        const rows = await getQuery(sql, [id]);
-        return rows[0];
-    } catch (err) {
-        console.error(err.message);
-    }
+  sql = "SELECT * FROM items WHERE id = ?";
+  try {
+    const rows = await getQuery(sql, [id]);
+    return rows[0];
+  } catch (err) {
+    console.error(err.message);
+  }
 }
 
-export async function deleteItem(id) {  
-    sql = 'DELETE FROM items WHERE id = ?';
-    try {
-        await runQuery(sql, [id]);
-    } catch (err) {
-        console.error(err.message);
-    }
+export async function deleteItem(id) {
+  sql = "DELETE FROM items WHERE id = ?";
+  try {
+    await runQuery(sql, [id]);
+  } catch (err) {
+    console.error(err.message);
+  }
 }

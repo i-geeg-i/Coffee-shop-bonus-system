@@ -1,49 +1,48 @@
 .aboutdiv {
-    background-color: #E7EFB5;
-    color: black;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
+  background-color: #e7efb5;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
 
-    width: auto;
-    align-self: center;
+  width: auto;
+  align-self: center;
 
-    border-radius: 20;
+  border-radius: 20;
 
-    padding: 0.5rem;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
+  padding: 0.5rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
 
-    justify-content: center;
-    justify-self: center;
+  justify-content: center;
+  justify-self: center;
 
-    margin-bottom: 1rem;
-    margin-left: 30%;
-    margin-right: 30%;
+  margin-bottom: 1rem;
+  margin-left: 30%;
+  margin-right: 30%;
 
-    box-shadow: 3px 3px 10px gray;
+  box-shadow: 3px 3px 10px gray;
 }
 
 .aboutdiv h3 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .aboutdiv .image {
-    display: inline-block;
+  display: inline-block;
 
-    margin-left: auto;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  margin-left: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
-    border-radius: 20;
+  border-radius: 20;
 
-    box-shadow: 3px 3px 10px gray;
+  box-shadow: 3px 3px 10px gray;
 }
 
 .aboutdiv .text {
-    display: inline-block;
-    width: fit-content;
-    margin-bottom: 1rem;
-    
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: 1rem;
 }

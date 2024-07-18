@@ -1,50 +1,50 @@
 .menu_item {
-    background-color: #E7EFB5;
-    align-items: center;
-    text-align: center;
+  background-color: #e7efb5;
+  align-items: center;
+  text-align: center;
 
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: x-large;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
 
-    width: 20rem;
-    height: 25rem;
+  width: 20rem;
+  height: 25rem;
 
-    border-radius: 20;
-    margin: 0.7rem;
+  border-radius: 20;
+  margin: 0.7rem;
 
-    padding-top: 2rem;
+  padding-top: 2rem;
 
-    display: inline-block;
+  display: inline-block;
 
-    box-shadow: 3px 3px 10px gray;
+  box-shadow: 3px 3px 10px gray;
 }
 
 .item_pic {
-    width: 17rem;
-    border-radius: 20;
-    box-shadow: 3px 3px 10px gray;
-    cursor: pointer;
+  width: 17rem;
+  border-radius: 20;
+  box-shadow: 3px 3px 10px gray;
+  cursor: pointer;
 }
 
 .item_name {
-    margin-top: 0.3rem;
-    margin-bottom: 0.3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 
 .price_btn {
-    background-color: black;
-    color: #AFCA0B;
-    border-radius: 30;
-    border-width: 0;
-    width: 17rem;
-    height: 2.5rem;
-    box-shadow: 3px 3px 10px gray;
-    cursor: pointer;
+  background-color: black;
+  color: #afca0b;
+  border-radius: 30;
+  border-width: 0;
+  width: 17rem;
+  height: 2.5rem;
+  box-shadow: 3px 3px 10px gray;
+  cursor: pointer;
 
-    font-family: "Roboto", sans-serif;
-    font-weight: bold;
-    font-style: normal;
-    font-size: x-large;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
 }
