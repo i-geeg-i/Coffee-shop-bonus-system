@@ -23,7 +23,7 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
   return(
     data.map(((item: any) => (
         <Item
-        data={{
+        params={{
           id: item.id,
           name: item.name,
           picSrc: item.img,

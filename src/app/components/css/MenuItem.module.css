@@ -48,3 +48,29 @@
   font-style: normal;
   font-size: x-large;
 }
+.change_btn {
+  background-color: black;
+  color: #afca0b;
+  border-radius: 30px;
+  border-width: 0;
+  width: 5rem;
+  height: 2.5rem;
+  box-shadow: 3px 3px 10px gray;
+  cursor: pointer;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
+}
+.input{
+  margin: 0px 10px 0px 10px;
+  border-radius: 30px;
+  width: 7rem;
+  height: 2rem;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
+}
