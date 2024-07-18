@@ -39,7 +39,6 @@ export default function Menu({ products }: Props) {
           ))}
         </div>
       </div>
-      <Link href="/">Go back</Link>
     </div>
   );
 }
