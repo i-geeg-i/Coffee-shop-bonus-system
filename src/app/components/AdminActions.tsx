@@ -1,0 +1,84 @@
+import Link from "next/link";
+import styles from "./css/menu.module.css";
+import MenuItem from "./MenuItem";
+import AdminItem from "./AdminItem";
+
+type Product = {
+    id: number;
+    img: string;
+    name: string;
+    price: number;
+  };
+  
+  type Props = {
+    products: Product[];
+  };
+
+function Menu(products: Props) {
+    if (!Array.isArray(products)) {
+      console.error("Products prop is not an array");
+      return <div>Error: Products prop is not an array</div>;
+    }
+  
+    return (
+      <div>
+        <div className={styles.main_div}>
+          <div className={styles.items_div}>
+            {products.map((product) => (
+              <MenuItem
+                key={product.id}
+                picSrc={product.img}
+                price={product.price}
+                name={product.name}
+                id={product.id}
+              />
+            ))}
+          </div>
+        </div>
+        <Link href="/">Go back</Link>
+      </div>
+    );
+  }
+
+
+export default async function AdminActions() {
+    let res = await fetch(`http://localhost:3000/api/menu`, {
+        method: "GET",
+        headers: new Headers({
+          Authorization: "Basic",
+        }),
+      });
+    
+      if (!res.ok) {
+        console.log("Error fetching menu data:", res.statusText);
+        return <div>No items available now</div>;
+      }
+    
+      let data = await res.json();
+      // console.log("Data fetched:", data);
+    
+      // Check if the data is an array
+      if (!Array.isArray(data)) {
+        console.error("Invalid data format:", data);
+        return <div>No items available now</div>;
+      }
+
+    return (
+        <>
+        <button>Add Item</button>
+        <div className={styles.main_div}>
+          <div className={styles.items_div}>
+            {data.map((product) => (
+              <AdminItem
+                key={product.id}
+                picSrc={product.img}
+                price={product.price}
+                name={product.name}
+                id={product.id}
+              />
+            ))}
+          </div>
+        </div>
+        </>
+  );
+}

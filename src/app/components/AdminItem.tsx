@@ -8,14 +8,13 @@ type Props = {
   id: number;
 };
 
-export default function MenuItem(props: Props) {
+export default function AdminItem(props: Props) {
   return (
-    <div className={styles.menu_item}>
-      <Link href={{ pathname: "/menu/" + props.id.toLocaleString() }}>
+    <div className={styles.menu_item}> 
         <img className={styles.item_pic} src={props.picSrc}></img>
-      </Link>
       <p className={styles.item_name}>{props.name}</p>
-      <button className={styles.btn}>{props.price + " ₽"}</button>
+      <button className={styles.btn}>Edit Item</button>
+      <button className={styles.btn}>Delete Item</button>
     </div>
   );
 }

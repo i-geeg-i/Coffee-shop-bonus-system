@@ -29,7 +29,7 @@ export default function FreeDrinkComponent({
       }}
     >
       <div style={{ marginRight: "20px" }}>
-        <QRCodeGenerator {...{id}}/>
+        <QRCodeGenerator {...{ id }} />
       </div>
       <div>
         <div style={{ fontSize: "18px", marginBottom: "10px" }}>
@@ -66,9 +66,9 @@ export default function FreeDrinkComponent({
           <div style={{ fontSize: "18px" }}>🎁</div>
         </div>
         <div style={{ fontSize: "16px" }}>
-          {rublesNeeded === 0 ? 
-              "You can get your free drink!" :  
-              `You need to purchase more than ${rublesNeeded} rubles to get your free drink`}
+          {rublesNeeded === 0
+            ? "You can get your free drink!"
+            : `You need to purchase more than ${rublesNeeded} rubles to get your free drink`}
         </div>
       </div>
       <Link href="/editProfile">

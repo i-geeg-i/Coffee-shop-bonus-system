@@ -7,7 +7,7 @@ import { title } from "process";
 export default function Home() {
   return (
     <div>
-      <h1 className="main-title">Coffee in</h1>
+      <h1 className="main-title">CoffeeIn</h1>
       <NewsItemLeft
         title="Only today!"
         img="/news1.png"
