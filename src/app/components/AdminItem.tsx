@@ -13,8 +13,9 @@ export default function AdminItem(props: Props) {
     <div className={styles.menu_item}> 
         <img className={styles.item_pic} src={props.picSrc}></img>
       <p className={styles.item_name}>{props.name}</p>
-      <button className={styles.btn}>Edit Item</button>
-      <button className={styles.btn}>Delete Item</button>
+      <Link href={{ pathname: "/account/" + props.id.toLocaleString() }}>
+        <button className={styles.btn}>Edit</button>
+      </Link>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default async function Account() {
     console.log({ error: error.message });
   } else {
     const profile = data[0];
-    console.log(profile);
+    // console.log(profile);
     if (!data[0]["is_admin"]) {
       return (
         <>

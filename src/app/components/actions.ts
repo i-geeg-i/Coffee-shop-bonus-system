@@ -35,7 +35,7 @@ export async function check_login_before_profile() {
   const { data: { user } } = await supabase.auth.getUser();
 
   // Log the user object to the console
-  console.log(user);
+  // console.log(user);
 
   // Check if the user exists
   if (user) {

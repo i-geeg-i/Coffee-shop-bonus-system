@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./css/menu.module.css";
-import MenuItem from "./MenuItem";
 import AdminItem from "./AdminItem";
 
 type Product = {
@@ -13,32 +12,6 @@ type Product = {
   type Props = {
     products: Product[];
   };
-
-function Menu(products: Props) {
-    if (!Array.isArray(products)) {
-      console.error("Products prop is not an array");
-      return <div>Error: Products prop is not an array</div>;
-    }
-  
-    return (
-      <div>
-        <div className={styles.main_div}>
-          <div className={styles.items_div}>
-            {products.map((product) => (
-              <MenuItem
-                key={product.id}
-                picSrc={product.img}
-                price={product.price}
-                name={product.name}
-                id={product.id}
-              />
-            ))}
-          </div>
-        </div>
-        <Link href="/">Go back</Link>
-      </div>
-    );
-  }
 
 
 export default async function AdminActions() {
@@ -65,7 +38,7 @@ export default async function AdminActions() {
 
     return (
         <>
-        <button>Add Item</button>
+        <button className={styles.btn}>Add Item</button>
         <div className={styles.main_div}>
           <div className={styles.items_div}>
             {data.map((product) => (
