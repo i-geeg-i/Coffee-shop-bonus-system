@@ -34,7 +34,7 @@ export async function check_login_before_profile() {
   // Fetch the user from Supabase authentication
   const { data: { user } } = await supabase.auth.getUser();
   
-  console.log(user, supabase.auth.logged);
+  console.log(user);
   // Log the user object to the console
   // console.log(user);
 
@@ -80,7 +80,7 @@ export const signOut: () => Promise<void> = async () => {
   console.log("SOSI PISKA");
   console.log("error while logiut: ", error);
   const { data: { user } } = await supabase.auth.getUser();
-  console.log(user, supabase.auth.logged);
+  console.log(user);
   await check_login_before_profile();
 }
 
