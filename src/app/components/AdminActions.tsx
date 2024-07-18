@@ -1,6 +1,13 @@
-import Link from "next/link";
+"use server"
+
 import styles from "./css/menu.module.css";
 import AdminItem from "./AdminItem";
+import { supabase } from "@/src/supabase/supabaseClient";
+import { useRouter } from "next/router";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { check_login_before_profile, navigateToLogin } from "./actions";
+import SignOutBtn from "./SignOutBtn";
 
 type Product = {
     id: number;
@@ -35,6 +42,8 @@ export default async function AdminActions() {
         console.error("Invalid data format:", data);
         return <div>No items available now</div>;
       }
+    
+      
 
     return (
         <>
@@ -51,6 +60,7 @@ export default async function AdminActions() {
               />
             ))}
           </div>
+          <SignOutBtn />
         </div>
         </>
   );
