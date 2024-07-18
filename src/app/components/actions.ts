@@ -75,6 +75,7 @@ export async function signup(formData: FormData) {
 }
 
 export const signOut: () => Promise<void> = async () => {
+  const supabase = createClient();
   const { error } = await supabase.auth.signOut();
   console.log("SOSI PISKA");
   console.log("error while logiut: ", error);
