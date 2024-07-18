@@ -1,31 +1,29 @@
 "use client";
 import Link from "next/link";
-import styles from "./css/MenuItem.module.css";
+import styles from "./css/CartItem.module.css";
 import { createClient } from "@/src/supabase/client";
 import { useState } from "react";
-
 type Props = {
-  picSrc: string;
-  price: number;
-  name: string;
-  id: string;
-  amount: number;
-};
+    id : string;
+    name : string;
+    img : string;
+    price : string;
+    amount: number;
+}
 type Product = {
-  id : string;
-  amount: number;
-}
-// cart: {[{id:0}], promo: "asd"}
-type Data = {
-  cart: {
-    promo: string;
-    products: Product[];
+    id : string;
+    amount: number;
   }
-}
-
-export default function MenuItem(props: Props) {
-  const [count, setCount] = useState(props.amount);
-  console.log("amount: ", props.amount);
+  // cart: {[{id:0}], promo: "asd"}
+  type Data = {
+    cart: {
+      promo: string;
+      products: Product[];
+    }
+  }
+  
+export default function CartItem(params : Props) {
+    const [count, setCount] = useState<number>(params.amount);
   async function addToCart(){
     const supabase = createClient();
 
@@ -33,7 +31,7 @@ export default function MenuItem(props: Props) {
       data: { user },
     } = await supabase.auth.getUser();
     if (user==undefined){
-      alert("Please login, to add to the cart!");
+        alert("Please login, to add to the cart!");
     }
     else{
       let { data, error } = await supabase
@@ -43,9 +41,9 @@ export default function MenuItem(props: Props) {
       .single();
       console.log(data['cart'] as Data);
       console.log(error);
-      if (data['cart'] == null || (data['cart'] as Data).cart.products.length == 0){
+      if (data['cart'] == null){
         const product : Product = {
-          id: props.id,
+          id: params.id,
           amount: 1
         }
         setCount(1);
@@ -67,12 +65,10 @@ export default function MenuItem(props: Props) {
             products: []
           }
         };
-        let help : boolean  = false;
         (data['cart'] as Data).cart.products.map(async (product: Product, index)=> {
-          if (product.id == props.id){
-            help = true;
+          if (product.id == params.id){
             const upd_product : Product = {
-              id: props.id,
+              id: params.id,
               amount: product.amount+1
             };
             setCount(product.amount+1);
@@ -82,14 +78,6 @@ export default function MenuItem(props: Props) {
             user_cart.cart.products.push(product);
           }
         })
-        if (!help){
-          const upd_product : Product = {
-            id: props.id,
-            amount: 1
-          };
-          setCount(1);
-          user_cart.cart.products.push(upd_product);
-        }
         
         const {error: update_error} = await supabase
         .from('profiles')
@@ -127,11 +115,11 @@ export default function MenuItem(props: Props) {
         (data['cart'] as Data).cart.products.map(async (product: Product, index)=> {
             console.log(product.id);
             console.log(product.amount-1>0);
-          if (product.id === props.id){
+          if (product.id === params.id){
             if (product.amount-1 > 0){
                 console.log("lalala")
                 const upd_product : Product = {
-                  id: props.id,
+                  id: params.id,
                   amount: product.amount-1
                 };
                 user_cart.cart.products.push(upd_product);
@@ -158,19 +146,23 @@ export default function MenuItem(props: Props) {
     }
   }
   return (
-    <div className={styles.menu_item}>
-      <Link href={{ pathname: "/menu/" + props.id.toLocaleString() }}>
-        <img className={styles.item_pic} src={props.picSrc}></img>
-      </Link>
-      <p className={styles.item_name}>{props.name}</p>
-      {count === 0 ? (
-            <div><button className={styles.price_btn} onClick={addToCart}>{props.price + " ₽"}</button></div>
-          ) : (
-            <div><button className={styles.change_btn} onClick={removeFromCart}>-</button><input value={count} className={styles.input} readOnly={true}></input><button className={styles.change_btn} onClick={addToCart}>+</button></div>
-          )}
-    </div>
-  );
+    <>
+        {count > 0 && (
+        <div className={styles.cart_item} style={{ margin: "10px" }}>
+        <p className={styles.item_name}>{params.name}</p>
+        <p className={styles.item_price}>{params.price}₽</p>
+        <div className={styles.changeForm}>
+          <button className={styles.change_btn} onClick={removeFromCart}>-</button>
+          <input value={count} className={styles.input} readOnly={true}></input>
+          <button className={styles.change_btn} onClick={addToCart}>+</button>
+        </div>
+      </div>
+      )
+    }
+    </>
+  )
+      
 }
 /*
-cart: {[{id:0}], promo: "asd"}
+        
 */

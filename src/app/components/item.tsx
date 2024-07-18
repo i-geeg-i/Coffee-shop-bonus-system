@@ -14,6 +14,7 @@ type Props = {
     picSrc: string;
     price: string;
     description: string;
+    amount: number;
   };
 };
 type Product = {
@@ -29,7 +30,8 @@ type Data = {
 }
 
 export default function Item({ params }: Props) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(params.amount);
+
   async function addToCart(){
     const supabase = createClient();
 
@@ -47,7 +49,7 @@ export default function Item({ params }: Props) {
       .single();
       console.log(data['cart'] as Data);
       console.log(error);
-      if (data['cart'] == null){
+      if (data['cart'] == null || (data['cart'] as Data).cart.products.length == 0){
         const product : Product = {
           id: params.id,
           amount: 1
@@ -102,7 +104,7 @@ export default function Item({ params }: Props) {
       data: { user },
     } = await supabase.auth.getUser();
     if (user==undefined){
-      console.log("Huiiiiiiiiiiiiiiiiiiiii!");
+        alert("Please login, to add to the cart!");
     }
     else{
       let { data, error } = await supabase
@@ -119,26 +121,36 @@ export default function Item({ params }: Props) {
           }
         };
         (data['cart'] as Data).cart.products.map(async (product: Product, index)=> {
-          if (product.id == params.id){
-            const upd_product : Product = {
-              id: params.id,
-              amount: product.amount-1
-            };
+            console.log(product.id);
+            console.log(product.amount-1>0);
+          if (product.id === params.id){
+            if (product.amount-1 > 0){
+                console.log("lalala")
+                const upd_product : Product = {
+                  id: params.id,
+                  amount: product.amount-1
+                };
+                user_cart.cart.products.push(upd_product);
+            }
             setCount(product.amount-1);
-            user_cart.cart.products.push(upd_product);
           }
           else{
+            console.log("Amount " + product.amount);
             user_cart.cart.products.push(product);
+            console.log("cart new in else:")
+            console.log(user_cart);
           }
         })
-        
+        console.log(user_cart);
         const {error: update_error} = await supabase
         .from('profiles')
         .update({ cart: user_cart})
         .eq('id', user.id);
         console.log("new cart: ");
         console.log( user_cart)
-
+        if (count>0){
+            console.log()
+        }
     }
   }
   const searchParams = useSearchParams();
@@ -161,7 +173,7 @@ export default function Item({ params }: Props) {
           {count === 0 ? (
             <div><button className={styles.price_btn} onClick={addToCart}>{price + " ₽"}</button></div>
           ) : (
-            <div><button className={styles.change_btn} onClick={removeFromCart}>-</button><input value={count} className={styles.input}></input><button className={styles.change_btn} onClick={addToCart}>+</button></div>
+            <div><button className={styles.change_btn} onClick={removeFromCart}>-</button><input value={count} className={styles.input} readOnly={true}></input><button className={styles.change_btn} onClick={addToCart}>+</button></div>
           )}
           
         </div>
