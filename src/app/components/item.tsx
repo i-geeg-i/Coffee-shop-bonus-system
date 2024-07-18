@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { supabase } from "@/src/supabase/supabaseClient";
 import { createClient } from "@/src/supabase/client";
 import { useState } from "react";
-
+export const fetchCache = 'force-no-store';
 type Props = {
   params: {
     id: string;
@@ -39,7 +39,7 @@ export default function Item({ params }: Props) {
       data: { user },
     } = await supabase.auth.getUser();
     if (user==undefined){
-      console.log("Huiiiiiiiiiiiiiiiiiiiii!");
+      alert("Please login, to add to the cart!");
     }
     else{
       let { data, error } = await supabase
@@ -160,9 +160,9 @@ export default function Item({ params }: Props) {
   const description: string = params["description"] as string;
   return (
     <>
-      <Link href="/menu">
+      <a href="/menu">
         <img src="/back.png" className={styles.go_back_btn}></img>
-      </Link>
+      </a>
       <div className={styles.main_block}>
         <div className={styles.left_block}>
           <img className={styles.item_pic} src={picSrc}></img>

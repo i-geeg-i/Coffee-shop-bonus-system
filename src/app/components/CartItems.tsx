@@ -37,7 +37,7 @@ export default async function CartItems() {
   } = await supabase.auth.getUser();
 
   if (!user) {
-    alert("Please login, to add to the cart!")
+    // alert("Please login, to add to the cart!")
     return <p>You should login first!</p>;
   } else {
     const { data, error } = await supabase

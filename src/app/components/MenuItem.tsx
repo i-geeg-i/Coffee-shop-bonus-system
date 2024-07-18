@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./css/MenuItem.module.css";
 import { createClient } from "@/src/supabase/client";
 import { useState } from "react";
-
+export const fetchCache = 'force-no-store';
 type Props = {
   picSrc: string;
   price: number;
@@ -159,9 +159,9 @@ export default function MenuItem(props: Props) {
   }
   return (
     <div className={styles.menu_item}>
-      <Link href={{ pathname: "/menu/" + props.id.toLocaleString() }}>
+      <a href={"/menu/" + props.id.toLocaleString()} >
         <img className={styles.item_pic} src={props.picSrc}></img>
-      </Link>
+      </a>
       <p className={styles.item_name}>{props.name}</p>
       {count === 0 ? (
             <div><button className={styles.btn} onClick={addToCart}>{props.price + " ₽"}</button></div>

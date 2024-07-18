@@ -43,7 +43,7 @@ export default async function Menu({ products }: Props) {
       let amount = 0;
       (data['cart'] as Data).cart.products.map(async (product:Product_Cart)=> {
         if (product.id == product_id){
-          console.log("Amount in menu: ", product.amount);
+          console.log("id: ", product.id,"Amount in menu: ", product.amount);
           amount = product.amount;
         }
       })

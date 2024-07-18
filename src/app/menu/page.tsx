@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Menu from "../components/Menu";
 import styles from "./menu.module.css";
-
+export const fetchCache = 'force-no-store';
 export default async function MenuPage() {
   let res = await fetch(`http://localhost:3000/api/menu`, {
     method: "GET",
     headers: new Headers({
       Authorization: "Basic",
     }),
+    cache: 'no-store'
   });
 
   if (!res.ok) {
