@@ -19,15 +19,18 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
     return <div>No such item</div>;
   }
   let data = await res.json();
-  return (
-    <Item
-      data={{
-        id: data.id,
-        name: data.name,
-        picSrc: data.img,
-        price: data.price,
-        description: data.description,
-      }}
-    />
-  );
+  console.log(data['id'])
+  return(
+    data.map(((item: any) => (
+        <Item
+        data={{
+          id: item.id,
+          name: item.name,
+          picSrc: item.img,
+          price: item.price,
+          description: item.description,
+        }}
+      />
+    ))
+  ));
 }
