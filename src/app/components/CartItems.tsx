@@ -21,7 +21,14 @@ type ProductDisp = {
   price: number;
   amount: number;
 };
+let total : number = 0;
+export function getTotal() : number{
+  return total;
+}
 
+export function setTotal(params: number) {
+  total = params;
+}
 export default async function CartItems() {
   const supabase = createClient();
   let cart: Data;
@@ -66,19 +73,18 @@ export default async function CartItems() {
     );
 
     const validProducts = products.filter((product) => product !== null) as ProductDisp[];
-    let total = 0;
+    let total : number = 0;
     validProducts.map((product: ProductDisp) => {
       total += product.amount*product.price;
     })
-    // console.log(validProducts.length);
-    
+
     return (
       <>
       <div className="products in cart" style={{display: "block"}}>
         {validProducts.length > 0 ? (
           validProducts.map((product: ProductDisp) => (
             <div key={product.id}>
-              <CartItem id={product.id} name={product.name} img={product.img} price={product.price.toString()} amount={product.amount} />
+              <CartItem id={product.id} name={product.name} img={product.img} price={product.price.toString()} amount={product.amount} total = {total} />
             </div>
           ))
         ) : (

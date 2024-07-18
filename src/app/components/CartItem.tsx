@@ -3,12 +3,15 @@ import Link from "next/link";
 import styles from "./css/CartItem.module.css";
 import { createClient } from "@/src/supabase/client";
 import { useState } from "react";
+import { getTotal, setTotal } from "./CartItems";
+
 type Props = {
     id : string;
     name : string;
     img : string;
     price : string;
     amount: number;
+    total: number;
 }
 type Product = {
     id : string;
@@ -46,6 +49,7 @@ export default function CartItem(params : Props) {
           id: params.id,
           amount: 1
         }
+        params.total
         setCount(1);
         const user_cart : Data = {
           cart: {
