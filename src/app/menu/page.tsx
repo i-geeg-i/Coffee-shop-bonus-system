@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Menu from "../components/Menu";
-import styles from "./menu.module.css"
+import styles from "./menu.module.css";
 
 export default async function MenuPage() {
   let res = await fetch(`http://localhost:3000/api/menu`, {

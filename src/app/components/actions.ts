@@ -29,13 +29,14 @@ export async function check_login_before_profile() {
   console.log("Checking login status...");
   
   // Create a Supabase client
-  const supabase = createClient();
+  // const supabase = createClient();
 
   // Fetch the user from Supabase authentication
   const { data: { user } } = await supabase.auth.getUser();
-
+  
+  console.log(user, supabase.auth.logged);
   // Log the user object to the console
-  console.log(user);
+  // console.log(user);
 
   // Check if the user exists
   if (user) {
@@ -44,6 +45,7 @@ export async function check_login_before_profile() {
     redirect("/account");
   } else {
     console.log("Not a user");
+    redirect("/profile")
   }
 }
 
@@ -72,6 +74,19 @@ export async function signup(formData: FormData) {
   }
 }
 
+export const signOut: () => Promise<void> = async () => {
+  const { error } = await supabase.auth.signOut();
+  console.log("SOSI PISKA");
+  console.log("error while logiut: ", error);
+  const { data: { user } } = await supabase.auth.getUser();
+  console.log(user, supabase.auth.logged);
+  await check_login_before_profile();
+}
+
 export async function navigateToAccount() {
   redirect(`/account`);
+}
+
+export async function navigateToLogin() {
+  redirect(`/profile`);
 }

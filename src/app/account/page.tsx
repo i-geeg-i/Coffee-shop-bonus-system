@@ -1,4 +1,5 @@
 import { createClient } from "../../supabase/server";
+import AdminActions from "../components/AdminActions";
 import FreeDrinkComponent from "../components/FreeDrinkComponent";
 
 export default async function Account() {
@@ -16,11 +17,19 @@ export default async function Account() {
     console.log({ error: error.message });
   } else {
     const profile = data[0];
-    console.log(profile);
-    return (
-      <>
-        <FreeDrinkComponent {...profile} />
-      </>
-    );
+    // console.log(profile);
+    if (!data[0]["is_admin"]) {
+      return (
+        <>
+          <FreeDrinkComponent {...profile} />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <AdminActions />
+        </>
+      );
+    }
   }
 }

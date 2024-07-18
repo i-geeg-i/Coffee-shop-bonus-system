@@ -16,11 +16,7 @@ export async function GET() {
       },
     );
   }
-  const { data, error } = await supabase
-  .from('products')
-  .select()
-  .eq('id', id)
-  console.log(data);
+  const { data, error } = await supabase.from("products").select().eq("id", id);
   // console.log(error);
   if (data == undefined) {
     return NextResponse.json(

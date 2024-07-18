@@ -11,7 +11,7 @@
   width: 20rem;
   height: 25rem;
 
-  border-radius: 20;
+  border-radius: 20px;
   margin: 0.7rem;
 
   padding-top: 2rem;
@@ -23,7 +23,7 @@
 
 .item_pic {
   width: 17rem;
-  border-radius: 20;
+  border-radius: 20px;
   box-shadow: 3px 3px 10px gray;
   cursor: pointer;
   justify-self: center;
@@ -35,10 +35,10 @@
   text-align: center;
 }
 
-.price_btn {
+.btn {
   background-color: black;
   color: #afca0b;
-  border-radius: 30;
+  border-radius: 30px;
   border-width: 0;
   width: 17rem;
   height: 2.5rem;
