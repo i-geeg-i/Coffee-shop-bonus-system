@@ -2,11 +2,6 @@
 
 import styles from "./css/menu.module.css";
 import AdminItem from "./AdminItem";
-import { supabase } from "@/src/supabase/supabaseClient";
-import { useRouter } from "next/router";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { check_login_before_profile, navigateToLogin } from "./actions";
 import SignOutBtn from "./SignOutBtn";
 
 type Product = {
@@ -47,7 +42,7 @@ export default async function AdminActions() {
 
     return (
         <>
-        <button className={styles.btn}>Add Item</button>
+        
         <div className={styles.main_div}>
           <div className={styles.items_div}>
             {data.map((product) => (
@@ -60,7 +55,9 @@ export default async function AdminActions() {
               />
             ))}
           </div>
+          
           <SignOutBtn />
+          <button className={styles.btn}>Add Item</button>
         </div>
         </>
   );

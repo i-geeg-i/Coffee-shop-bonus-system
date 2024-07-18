@@ -164,7 +164,7 @@ export default function MenuItem(props: Props) {
       </Link>
       <p className={styles.item_name}>{props.name}</p>
       {count === 0 ? (
-            <div><button className={styles.price_btn} onClick={addToCart}>{props.price + " ₽"}</button></div>
+            <div><button className={styles.btn} onClick={addToCart}>{props.price + " ₽"}</button></div>
           ) : (
             <div><button className={styles.change_btn} onClick={removeFromCart}>-</button><input value={count} className={styles.input} readOnly={true}></input><button className={styles.change_btn} onClick={addToCart}>+</button></div>
           )}

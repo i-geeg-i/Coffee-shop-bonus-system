@@ -51,8 +51,6 @@ export default function EditItem({ data }: Props) {
   const handleDelete: (e: any) => Promise<void> = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("DELETING");
-
     const response = await supabase
     .from('products')
     .delete()

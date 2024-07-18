@@ -1,5 +1,6 @@
 import Link from "next/link";
 import QRCodeGenerator from "./QRCodeGenerator";
+import SignOutBtn from "./SignOutBtn";
 
 export default function FreeDrinkComponent({
   id,
@@ -74,6 +75,8 @@ export default function FreeDrinkComponent({
       <Link href="/editProfile">
         <button className="button">Edit Profile</button>
       </Link>
+      <SignOutBtn />
     </div>
+    
   );
 }
