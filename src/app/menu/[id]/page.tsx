@@ -17,7 +17,7 @@ type Data = {
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
-  parent?: ResolvingMetadata,
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { id } = params;
   const { data, error } = await supabase
@@ -57,7 +57,7 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
       console.log(data["cart"] as Data);
       console.log(error);
       let amount = 0;
-      (data["cart"] as Data).cart.products.map(async (product: Product) => {
+      (data["cart"] as Data).cart.products.map((product: Product) => {
         if (product.id == product_id) {
           console.log("Amount in menu: ", product.amount);
           amount = product.amount;
