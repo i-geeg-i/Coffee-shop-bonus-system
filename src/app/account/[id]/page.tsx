@@ -10,6 +10,7 @@ export default async function ItemEditPage({ params }: { params: { id: string } 
       Authorization: "Basic",
       id: id,
     }),
+    cache:"no-cache"
   });
   if (!res.ok) {
     // Handle errors here, e.g., by returning an error page or logging
@@ -23,7 +24,7 @@ export default async function ItemEditPage({ params }: { params: { id: string } 
   console.log(data["id"]);
   return data.map((item: any) => (
     <EditItem
-      data={{
+      item={{
         id: item.id,
         name: item.name,
         picSrc: item.img,

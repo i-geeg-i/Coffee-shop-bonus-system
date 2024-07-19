@@ -91,3 +91,14 @@ export async function navigateToAccount() {
 export async function navigateToLogin() {
   redirect(`/profile`);
 }
+
+export const addItem: () => Promise<void> = async () => {
+  const supabase = createClient();
+  const { data, error } = await supabase
+  .from('products')
+  .insert({ name: 'New Product', description: 'Description', price: 1, img: '/default_coffee.jpg' })
+  .select()
+  .single()
+  redirect(`account/` + data["id"])
+}
+
