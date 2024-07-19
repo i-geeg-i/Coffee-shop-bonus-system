@@ -26,42 +26,60 @@ export default function EditItem({ item }: Props) {
   const [pic, setPic] = useState<string>(item["picSrc"] as string);
   const picSrc: string = item["picSrc"] as string;
   const [price, setPrice] = useState<number>(parseFloat(item["price"]));
-  const [description, setDescription] = useState<string>(item["description"] as string);
+  const [description, setDescription] = useState<string>(
+    item["description"] as string,
+  );
 
   // Added state for error messages
-  const [errors, setErrors] = useState({ name: '', pic: '', description: '', price: '' });
+  const [errors, setErrors] = useState({
+    name: "",
+    pic: "",
+    description: "",
+    price: "",
+  });
 
   // Updated handlers to clear errors when user types
-  const handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
+  const handleNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e,
+  ) => {
     setName(e.target.value);
-    setErrors({ ...errors, name: '' });
+    setErrors({ ...errors, name: "" });
   };
 
-  const handlePicChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
+  const handlePicChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e,
+  ) => {
     setPic(e.target.value);
-    setErrors({ ...errors, pic: '' });
+    setErrors({ ...errors, pic: "" });
   };
 
-  const handleDescriptionChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void = (e) => {
+  const handleDescriptionChange: (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => void = (e) => {
     setDescription(e.target.value);
-    setErrors({ ...errors, description: '' });
+    setErrors({ ...errors, description: "" });
   };
 
-  const handlePriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (e) => {
+  const handlePriceChange: (e: React.ChangeEvent<HTMLInputElement>) => void = (
+    e,
+  ) => {
     const value = e.target.value;
     setPrice(parseFloat(value));
-    setErrors({ ...errors, price: '' });
+    setErrors({ ...errors, price: "" });
   };
 
   // Added form validation in handleSubmit
-  const handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void> = async (e) => {
+  const handleSubmit: (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => Promise<void> = async (e) => {
     e.preventDefault();
 
     const newErrors: any = {};
-    if (!name) newErrors.name = 'Name is required';
-    if (!pic) newErrors.pic = 'Picture source is required';
-    if (!description) newErrors.description = 'Description is required';
-    if (!price || isNaN(price) || price <= 0) newErrors.price = 'Valid price is required';
+    if (!name) newErrors.name = "Name is required";
+    if (!pic) newErrors.pic = "Picture source is required";
+    if (!description) newErrors.description = "Description is required";
+    if (!price || isNaN(price) || price <= 0)
+      newErrors.price = "Valid price is required";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -108,7 +126,9 @@ export default function EditItem({ item }: Props) {
     }
   };
 
-  const handleDelete: (e: any) => Promise<void> = async (e: React.FormEvent<HTMLFormElement>, ) => {
+  const handleDelete: (e: any) => Promise<void> = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
     const supabase = createClient();
     const {
@@ -163,7 +183,8 @@ export default function EditItem({ item }: Props) {
             id="name"
             onChange={handleNameChange}
           ></input>
-          {errors.name && <div className={styles.error}>{errors.name}</div>} {/* Display error message for name */}
+          {errors.name && <div className={styles.error}>{errors.name}</div>}{" "}
+          {/* Display error message for name */}
           <br />
           <label htmlFor="pic">Local picture src:</label>
           <input
@@ -172,7 +193,8 @@ export default function EditItem({ item }: Props) {
             id="pic"
             onChange={handlePicChange}
           ></input>
-          {errors.pic && <div className={styles.error}>{errors.pic}</div>} {/* Display error message for pic */}
+          {errors.pic && <div className={styles.error}>{errors.pic}</div>}{" "}
+          {/* Display error message for pic */}
           <br />
           <label htmlFor="description">Description:</label>
           <textarea
@@ -182,7 +204,10 @@ export default function EditItem({ item }: Props) {
             id="description"
             onChange={handleDescriptionChange}
           ></textarea>
-          {errors.description && <div className={styles.error}>{errors.description}</div>} {/* Display error message for description */}
+          {errors.description && (
+            <div className={styles.error}>{errors.description}</div>
+          )}{" "}
+          {/* Display error message for description */}
           <br />
           <label htmlFor="price">Price:</label>
           <input
@@ -191,8 +216,9 @@ export default function EditItem({ item }: Props) {
             type="number"
             id="price"
             onChange={handlePriceChange}
-          ></input> ₽
-          {errors.price && <div className={styles.error}>{errors.price}</div>} {/* Display error message for price */}
+          ></input>{" "}
+          ₽{errors.price && <div className={styles.error}>{errors.price}</div>}{" "}
+          {/* Display error message for price */}
           <br />
           <button className={styles.delete_btn} onClick={handleDelete}>
             Delete

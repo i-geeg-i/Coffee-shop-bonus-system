@@ -2,7 +2,7 @@
 import { createClient } from "@/src/supabase/server";
 import Item from "../../components/item";
 import { supabase } from "@/src/supabase/supabaseClient";
-import type { Metadata, ResolvingMetadata } from 'next'
+import type { Metadata, ResolvingMetadata } from "next";
 
 type Product = {
   id: string;
@@ -15,9 +15,16 @@ type Data = {
   };
 };
 
-export async function generateMetadata({ params }: { params: { id: string } }, parent?: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: { params: { id: string } },
+  parent?: ResolvingMetadata,
+): Promise<Metadata> {
   const { id } = params;
-  const { data, error } = await supabase.from("products").select().eq("id", id).single();
+  const { data, error } = await supabase
+    .from("products")
+    .select()
+    .eq("id", id)
+    .single();
   if (error) {
     console.log("There is some trouble with item. Get next response: ", error);
     return {
@@ -61,7 +68,11 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
     return 0;
   }
   const { id } = params;
-  const { data, error } = await supabase.from("products").select().eq("id", id).single();
+  const { data, error } = await supabase
+    .from("products")
+    .select()
+    .eq("id", id)
+    .single();
   if (error) {
     console.log("There is some trouble with item. Get next response: ", error);
     return <div>No such item</div>;
