@@ -1,7 +1,7 @@
 'use client'
 import { supabase } from "@/src/supabase/supabaseClient";
 import React, { useEffect, useState } from 'react';
-import styles from './css/purchase.module.css';
+import styles from './css/Purchase.module.css';
 
 interface Product {
   id: number;

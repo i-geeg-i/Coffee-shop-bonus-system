@@ -28,15 +28,12 @@ export async function login(formData: FormData) {
 export async function check_login_before_profile() {
   console.log("Checking login status...");
   
-  // Fetch the user from Supabase authentication
   const { data: { user } } = await supabase.auth.getUser();
   
   console.log(user);
 
-  // Check if the user exists
   if (user) {
     console.log("User is logged in. Redirecting to account...");
-    // Redirect to the account page
     redirect("/account");
   } else {
     console.log("Not a user");

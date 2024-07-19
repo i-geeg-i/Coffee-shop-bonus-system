@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "./css/AboutDiv.module.css";
-import { text } from "stream/consumers";
 
 type Props = {
   text: Array<Array<string>>;
