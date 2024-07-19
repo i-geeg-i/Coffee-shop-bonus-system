@@ -3,6 +3,7 @@
 import styles from "./css/menu.module.css";
 import AdminItem from "./AdminItem";
 import SignOutBtn from "./SignOutBtn";
+import AddItemBtn from "./AddItemBtn";
 
 type Product = {
     id: number;
@@ -57,7 +58,7 @@ export default async function AdminActions() {
           </div>
           
           <SignOutBtn />
-          <button className={styles.btn}>Add Item</button>
+          <AddItemBtn />
         </div>
         </>
   );
