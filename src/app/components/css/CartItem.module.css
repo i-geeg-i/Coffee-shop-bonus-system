@@ -11,7 +11,9 @@
   height: fit-content;
   margin: 0.7rem;
   justify-content: space-between;
-  display: flex;
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
 }
 
 .item_name {
@@ -19,7 +21,7 @@
   margin-bottom: 0.3rem;
   text-align: left;
   justify-self: left;
-  display: inline-block;
+  display: inline;
 }
 
 .item_price {
@@ -29,7 +31,7 @@
   margin-right: 10px;
   text-align: left;
   justify-self: left;
-  display: inline-block;
+  display: inline;
 }
 
 .price_btn {
@@ -53,7 +55,7 @@
   border-radius: 30px;
   border-width: 0;
   width: 5rem;
-  height: 2.5rem;
+  height: 2rem;
   box-shadow: 3px 3px 10px gray;
   cursor: pointer;
 
@@ -66,7 +68,7 @@
   margin: 0px 10px 0px 10px;
   border-radius: 30px;
   width: 7rem;
-  height: 2rem;
+  height: 1.5rem;
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
@@ -76,5 +78,5 @@
 .changeForm{
   justify-self: right;
   margin: 10px;
-  display: flexbox;
+  display: inline;
 }

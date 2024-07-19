@@ -28,6 +28,6 @@
     ".next/types/**/*.ts",
     "src/app/api/db_worker.js",
     "src/app/api/db_worker.js"
-  ],
+, "src/app/components/useTotal.tsx"  ],
   "exclude": ["node_modules"]
 }

@@ -12,9 +12,9 @@ div.cart_div {
 
     /* padding: 0.5rem; */
 
-    justify-content: center;
+    /* justify-content: center;
     justify-self: center;
-    align-items:start;
-    display: flex;
+    align-items:start; */
+    display: block;
     box-shadow: 3px 3px 10px gray;
 }

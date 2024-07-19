@@ -80,7 +80,7 @@ export default async function CartItems(onChange : { onChange: () => React.JSX.E
         {validProducts.length > 0 ? (
           validProducts.map((product: ProductDisp) => (
             <div key={product.id}>
-              <CartItem id={product.id} name={product.name} img={product.img} price={product.price.toString()} amount={product.amount} total = {total} />
+              <CartItem id={product.id} name={product.name} img={product.img} price={product.price} amount={product.amount} total = {total} />
             </div>
           ))
         ) : (

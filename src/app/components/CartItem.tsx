@@ -4,12 +4,13 @@ import styles from "./css/CartItem.module.css";
 import { createClient } from "@/src/supabase/client";
 import { useState } from "react";
 import { getTotal, setTotal } from "./CartItems";
+import { addToTotal } from "./CartTotal";
 
 type Props = {
     id : string;
     name : string;
     img : string;
-    price : string;
+    price : number;
     amount: number;
     total: number;
 }
@@ -24,7 +25,7 @@ type Product = {
       products: Product[];
     }
   }
-  
+
 export default function CartItem(params : Props) {
     const [count, setCount] = useState<number>(params.amount);
   async function addToCart(){
@@ -51,6 +52,7 @@ export default function CartItem(params : Props) {
         }
         params.total
         setCount(1);
+        addToTotal(1*params.price);
         const user_cart : Data = {
           cart: {
             promo: "",
@@ -69,6 +71,7 @@ export default function CartItem(params : Props) {
             products: []
           }
         };
+        addToTotal(1*params.price);
         (data['cart'] as Data).cart.products.map(async (product: Product, index)=> {
           if (product.id == params.id){
             const upd_product : Product = {
@@ -103,6 +106,8 @@ export default function CartItem(params : Props) {
         alert("Please login, to add to the cart!");
     }
     else{
+      
+      addToTotal(-1*params.price);
       let { data, error } = await supabase
       .from("profiles")
       .select()
@@ -152,7 +157,7 @@ export default function CartItem(params : Props) {
   return (
     <>
         {count > 0 && (
-        <div className={styles.cart_item} style={{ margin: "10px" }}>
+        <div className={styles.cart_item}>
         <p className={styles.item_name}>{params.name}</p>
         <p className={styles.item_price}>{params.price}₽</p>
         <div className={styles.changeForm}>
