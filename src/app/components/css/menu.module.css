@@ -2,14 +2,39 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+}
+
+.infoT{
+  background-color: #EBFFC9;
+width: 45%;
+padding-left: 20px;
+padding-right: 20px;
+margin: 0 auto;  
+padding: 20px;  
+border-radius: 20px; 
+font-family: "Roboto", sans-serif;
+font-weight: bold;
+font-style: normal;
+font-size:large;
+margin-bottom: 50px;
+}
+.infoT p{
+  font-weight: normal;
+
 }
 
 .items_div {
   justify-content: left;
+  gap: 20px;
 }
 
 .btn {
-  background-color: black;
+  background-color: white;
   color: #afca0b;
   border-radius: 30px;
   border-width: 0;

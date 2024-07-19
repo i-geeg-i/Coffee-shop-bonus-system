@@ -1,5 +1,5 @@
 .main_block {
-  background-color: #e7efb5;
+  background-color: #EBFFC9;
   color: black;
   font-family: "Roboto", sans-serif;
   width: 95%;
@@ -53,24 +53,7 @@
   font-style: normal;
   margin: 20px;
 }
-.right_block_edit .delete_btn {
-  background-color: rgb(255, 103, 103);
-  color: #000000;
-  border-radius: 30px;
-  border-width: 0;
-  width: 10rem;
-  height: 2.5rem;
-  box-shadow: 3px 3px 10px gray;
-  cursor: pointer;
 
-  margin: 10px;
-  float: left;
-
-  font-family: "Roboto", sans-serif;
-  font-weight: bold;
-  font-style: normal;
-  font-size: x-large;
-}
 
 .right_block_edit .submit_btn {
   background-color: black;
@@ -204,4 +187,36 @@
     margin-bottom: 10px;
     margin-top: 10px;
   }
+}
+
+.delete_btn {
+  background-color: rgb(181, 38, 38);
+  color: #ffffff;
+  border-radius: 15px;
+  border-width: 0;
+  width: 17rem;
+  height: 3rem;
+  box-shadow: 2px 2px 10px -3px gray;
+  cursor: pointer;
+  margin: 5px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
+}
+
+.btn {
+  background-color: white;
+  color: #6CA900;
+  border-radius: 15px;
+  border-width: 0;
+  width: 17rem;
+  height: 3rem;
+  box-shadow: 2px 2px 10px -3px gray;
+  cursor: pointer;
+  margin: 5px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
 }

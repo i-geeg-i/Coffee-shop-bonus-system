@@ -1,7 +1,7 @@
 "use client";
 
 import { addItem } from "./actions";
-import style from "./css/menu.module.css";
+import style from "./css/MenuItem.module.css";
 
 export default function AddItemBtn() {
   return (

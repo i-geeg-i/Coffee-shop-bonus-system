@@ -223,7 +223,7 @@ export default function EditItem({ item }: Props) {
           <button className={styles.delete_btn} onClick={handleDelete}>
             Delete
           </button>
-          <button className={styles.submit_btn} type="submit">
+          <button className={styles.btn} type="submit">
             Submit
           </button>
         </form>
