@@ -44,7 +44,7 @@ export default function CartItem(params : Props) {
       .single();
       console.log(data['cart'] as Data);
       console.log(error);
-      if (data['cart'] == null){
+      if (data['cart'] == null || data['cart'].length <= 0 ){
         const product : Product = {
           id: params.id,
           amount: 1

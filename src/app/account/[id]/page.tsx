@@ -23,7 +23,7 @@ export default async function ItemEditPage({ params }: { params: { id: string } 
   let data = await res.json();
   console.log(data["id"]);
   return data.map((item: any) => (
-    <EditItem
+    <EditItem key={item.id}
       item={{
         id: item.id,
         name: item.name,

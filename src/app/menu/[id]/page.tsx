@@ -58,7 +58,7 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
   console.log(data['id'])
   return(
     data.map((async (item: any) => (
-        <Item
+        <Item key={item.id}
         params={{
           id: item.id,
           name: item.name,

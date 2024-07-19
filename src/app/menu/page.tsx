@@ -26,6 +26,6 @@ export default async function MenuPage() {
   }
 
   return (
-    <Menu products={data} /> // Pass the products array to Menu component
+    <Menu products={data} />
   );
 }

@@ -29,7 +29,7 @@ export function getTotal() : number{
 export function setTotal(params: number) {
   total = params;
 }
-export default async function CartItems() {
+export default async function CartItems(onChange : { onChange: () => React.JSX.Element; }) {
   const supabase = createClient();
   let cart: Data;
   const {
@@ -73,10 +73,6 @@ export default async function CartItems() {
     );
 
     const validProducts = products.filter((product) => product !== null) as ProductDisp[];
-    let total : number = 0;
-    validProducts.map((product: ProductDisp) => {
-      total += product.amount*product.price;
-    })
 
     return (
       <>
@@ -90,7 +86,6 @@ export default async function CartItems() {
         ) : (
           <p>No items in the cart</p>
         )}
-        {validProducts.length>0 && (<div className="total">{total}</div>)}
         </div>
       </>
     );
