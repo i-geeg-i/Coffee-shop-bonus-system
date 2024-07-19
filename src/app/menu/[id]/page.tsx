@@ -2,6 +2,8 @@
 import { createClient } from "@/src/supabase/server";
 import Item from "../../components/item";
 import { supabase } from "@/src/supabase/supabaseClient";
+import type { Metadata, ResolvingMetadata } from 'next'
+
 type Product = {
   id: string;
   amount: number;
@@ -12,6 +14,26 @@ type Data = {
     products: Product[];
   };
 };
+
+export async function generateMetadata({ params }: { params: { id: string } }, parent?: ResolvingMetadata): Promise<Metadata> {
+  const { id } = params;
+  const { data, error } = await supabase.from("products").select().eq("id", id).single();
+  if (error) {
+    console.log("There is some trouble with item. Get next response: ", error);
+    return {
+      title: "Item not found",
+      description: "The item you are looking for does not exist.",
+    };
+  }
+
+  const item = data;
+
+  return {
+    title: `${item.name}`,
+    description: item.description,
+  };
+}
+
 export default async function ItemPage({ params }: { params: { id: string } }) {
   async function checkCart(product_id: string): Promise<number> {
     const supabase = createClient();
@@ -39,23 +61,27 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
     return 0;
   }
   const { id } = params;
-  const { data, error } = await supabase.from("products").select().eq("id", id);
+  const { data, error } = await supabase.from("products").select().eq("id", id).single();
   if (error) {
     console.log("There is some trouble with item. Get next response: ", error);
     return <div>No such item</div>;
   }
 
-  return data.map(async (item: any) => (
-    <Item
-      key={item.id}
-      params={{
-        id: item.id,
-        name: item.name,
-        picSrc: item.img,
-        price: item.price,
-        description: item.description,
-        amount: await checkCart(item.id),
-      }}
-    />
-  ));
+  const item = data;
+
+  return (
+    <>
+      <Item
+        key={item.id}
+        params={{
+          id: item.id,
+          name: item.name,
+          picSrc: item.img,
+          price: item.price,
+          description: item.description,
+          amount: await checkCart(item.id),
+        }}
+      />
+    </>
+  );
 }
