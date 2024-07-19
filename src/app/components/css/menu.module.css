@@ -7,3 +7,39 @@
 .items_div {
   justify-content: left;
 }
+
+.btn {
+  background-color: black;
+  color: #afca0b;
+  border-radius: 30px;
+  border-width: 0;
+  width: 10rem;
+  height: 2.5rem;
+  box-shadow: 3px 3px 10px gray;
+  cursor: pointer;
+
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
+}
+
+.signout_btn {
+  background-color: rgb(255, 103, 103);
+  color: #000000;
+  border-radius: 30px;
+  border-width: 0;
+  width: 10rem;
+  height: 2.5rem;
+  box-shadow: 3px 3px 10px gray;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: x-large;
+}

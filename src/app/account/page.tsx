@@ -1,4 +1,5 @@
 import { createClient } from "../../supabase/server";
+import AdminActions from "../components/AdminActions";
 import FreeDrinkComponent from "../components/FreeDrinkComponent";
 import PurchaseHistory from "../components/PurchaseHistory";
 
@@ -17,28 +18,37 @@ export default async function Account() {
   const { data: profileData, error: profileError } = await supabase
     .from("profiles")
     .select()
-    .eq("id", user.id)
-    .single();
-
+    .eq("id", user?.id);
   if (profileError) {
     console.log("Error fetching profile:", profileError.message);
     return <div>Error loading profile</div>;
-  }
+  } 
 
   const { data: purchases, error: purchaseError } = await supabase
-    .from("purchases")
-    .select()
-    .eq("user_id", user.id);
-
+  .from("purchases")
+  .select()
+  .eq("user_id", user.id);
+  
   if (purchaseError) {
     console.log("Error fetching purchases:", purchaseError.message);
     return <div>Error loading purchases</div>;
   }
 
-  return (
-    <>
-      <FreeDrinkComponent {...profileData} />
-      <PurchaseHistory purchases={purchases} />
-    </>
-  );
-}
+    const profile = profileData[0];
+    if (!profileData[0]["is_admin"]) {
+      return (
+        <>
+          <FreeDrinkComponent {...profile} />
+          <PurchaseHistory purchases={purchases} />
+        </>
+      );
+    } else {
+      return (
+        <>
+          <AdminActions />
+        </>
+      );
+    }
+  }
+
+

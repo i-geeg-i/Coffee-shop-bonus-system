@@ -1,0 +1,53 @@
+.menu_item {
+    background-color: #e7efb5;
+    align-items: center;
+    text-align: center;
+  
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: x-large;
+  
+    width: 20rem;
+    height: 27rem;
+  
+    border-radius: 20px;
+    margin: 0.7rem;
+  
+    padding-top: 2rem;
+  
+    display: inline-block;
+  
+    box-shadow: 3px 3px 10px gray;
+  }
+  
+  .item_pic {
+    width: 17rem;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px gray;
+    cursor: pointer;
+  }
+  
+  .item_name {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .btn {
+    background-color: black;
+    color: #afca0b;
+    border-radius: 30px;
+    border-width: 0;
+    width: 17rem;
+    height: 2.5rem;
+    box-shadow: 3px 3px 10px gray;
+    cursor: pointer;
+  
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: x-large;
+
+    margin-bottom: 1rem;
+  }
+  

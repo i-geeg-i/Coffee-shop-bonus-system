@@ -31,6 +31,27 @@ body {
   text-decoration: underline;
 }
 
+.cart_btn {
+  width: 60px;
+  height: 60px;
+  background-color: #a1c233;
+  border-radius: 50%;
+  border-width: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: auto;
+  margin-left: auto;
+  position: absolute;
+  right: 13%;
+  top: 15px;
+  box-shadow: 3px 3px 10px gray;
+}
+
+.cart_btn img {
+  width: 40px;
+  height: 40px;
+}
+
 .button {
   background-color: #a1c233;
   color: white;
