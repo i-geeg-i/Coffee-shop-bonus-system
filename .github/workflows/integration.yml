@@ -6,7 +6,7 @@ on:
       - polina
 
 jobs:
-  check:
+  check_for_CI:
     runs-on: ubuntu-latest
 
     steps:
