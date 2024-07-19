@@ -73,16 +73,27 @@ export default function Item({ params }: Props) {
             products: []
           }
         };
+        let contains: boolean = false;
         (data['cart'] as Data).cart.products.map(async (product: Product, index)=> {
           if (product.id == params.id){
             const upd_product : Product = {
               id: params.id,
               amount: product.amount+1
             };
+            contains = true;
             setCount(product.amount+1);
+            console.log(product.amount);
             user_cart.cart.products.push(upd_product);
           }
           else{
+            user_cart.cart.products.push(product);
+          }
+          if (!contains){
+            const product : Product = {
+              id: params.id,
+              amount: 1
+            }
+            setCount(1);
             user_cart.cart.products.push(product);
           }
         })
