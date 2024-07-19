@@ -1,4 +1,5 @@
 import CartItems from "../../components/CartItems";
+import CartPurchase from "../../components/CartPurchase";
 import CartTotal from "../../components/CartTotal";
 import styles from "./cart.module.css";
 
@@ -8,6 +9,7 @@ export default function Cart() {
         <div className={styles.cart_div}>
             <CartItems onChange={CartTotal}/>
             <CartTotal/>
+            <CartPurchase/>
         </div>
         </>
     )

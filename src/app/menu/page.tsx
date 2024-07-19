@@ -1,22 +1,15 @@
 import Link from "next/link";
 import Menu from "../components/Menu";
 import styles from "./menu.module.css";
+import { supabase } from "@/src/supabase/supabaseClient";
 export const fetchCache = 'force-no-store';
 export default async function MenuPage() {
-  let res = await fetch(`http://localhost:3000/api/menu`, {
-    method: "GET",
-    headers: new Headers({
-      Authorization: "Basic",
-    }),
-    cache: 'no-store'
-  });
+  const { data, error } = await supabase.from("products").select();
 
-  if (!res.ok) {
-    console.log("Error fetching menu data:", res.statusText);
+  if (error) {
+    console.log("Error fetching menu data:", error);
     return <div>No items available now</div>;
   }
-
-  let data = await res.json();
   // console.log("Data fetched:", data);
 
   // Check if the data is an array
