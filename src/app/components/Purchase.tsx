@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import { supabase } from "@/src/supabase/supabaseClient";
-import React, { useEffect, useState } from 'react';
-import styles from './css/Purchase.module.css';
+import React, { useEffect, useState } from "react";
+import styles from "./css/Purchase.module.css";
 
 interface Product {
   id: number;
@@ -19,7 +19,7 @@ interface PurchaseProps {
 
 export default function Purchase({ itemsIds, date, status }: PurchaseProps) {
   const [items, setItems] = useState<Product[]>([]);
-  
+
   useEffect(() => {
     const fetchItems = async () => {
       const fetchedItems: Product[] = [];
@@ -27,18 +27,18 @@ export default function Purchase({ itemsIds, date, status }: PurchaseProps) {
       for (const itemId of itemsIds) {
         try {
           const { data, error } = await supabase
-            .from('products')
+            .from("products")
             .select()
-            .eq('id', itemId)
+            .eq("id", itemId)
             .single();
 
           if (error) {
-            console.error('Error fetching product:', error);
+            console.error("Error fetching product:", error);
           } else if (data) {
             fetchedItems.push(data);
           }
         } catch (error) {
-          console.error('Unexpected error fetching product:', error);
+          console.error("Unexpected error fetching product:", error);
         }
       }
 
@@ -57,40 +57,42 @@ export default function Purchase({ itemsIds, date, status }: PurchaseProps) {
 
   const getStatusImage = (status: string) => {
     switch (status) {
-      case 'done':
-        return '/done.png'; // Replace with actual image path
-      case 'in progress':
-        return '/in_progress.png'; // Replace with actual image path
-      case 'cancelled':
-        return '/cancelled.png'; // Replace with actual image path
+      case "done":
+        return "/done.png"; // Replace with actual image path
+      case "in progress":
+        return "/in_progress.png"; // Replace with actual image path
+      case "cancelled":
+        return "/cancelled.png"; // Replace with actual image path
       default:
-        return '';
+        return "";
     }
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles['checkmark-container']}>
-        <img src={getStatusImage(status)} alt={status} className={styles['status-icon']} />
+      <div className={styles["checkmark-container"]}>
+        <img
+          src={getStatusImage(status)}
+          alt={status}
+          className={styles["status-icon"]}
+        />
       </div>
       <div className={styles.content}>
         <div className={styles.date}>Order {date.toLocaleDateString()}</div>
-        <ul className={styles['item-list']}>
-          {items.map(item => (
+        <ul className={styles["item-list"]}>
+          {items.map((item) => (
             <li key={item.id} className={styles.item}>
               {item.name} {item.price}₽
             </li>
           ))}
         </ul>
-        <div className={styles.total}>
-          Total: {totalPrice}₽
-        </div>
+        <div className={styles.total}>Total: {totalPrice}₽</div>
         <div className={styles.bonus}>
-          Bonuses: <span className={styles['bonus-value']}>{bonus}</span>
+          Bonuses: <span className={styles["bonus-value"]}>{bonus}</span>
         </div>
       </div>
       <div className={styles.refresh}>
-        <span className={styles['refresh-icon']}>↻</span>
+        <span className={styles["refresh-icon"]}>↻</span>
       </div>
     </div>
   );

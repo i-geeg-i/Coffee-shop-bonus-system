@@ -62,7 +62,7 @@
   font-style: normal;
   font-size: x-large;
 }
-.input{
+.input {
   margin: 0px 10px 0px 10px;
   border-radius: 30px;
   width: 7rem;
@@ -73,7 +73,7 @@
   font-style: normal;
   font-size: x-large;
 }
-.changeForm{
+.changeForm {
   justify-self: right;
   margin: 10px;
   display: flexbox;

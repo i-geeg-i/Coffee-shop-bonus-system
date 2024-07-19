@@ -27,9 +27,11 @@ export async function login(formData: FormData) {
 
 export async function check_login_before_profile() {
   console.log("Checking login status...");
-  
-  const { data: { user } } = await supabase.auth.getUser();
-  
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   console.log(user);
 
   if (user) {
@@ -37,7 +39,7 @@ export async function check_login_before_profile() {
     redirect("/account");
   } else {
     console.log("Not a user");
-    redirect("/profile")
+    redirect("/profile");
   }
 }
 
@@ -70,10 +72,12 @@ export const signOut: () => Promise<void> = async () => {
   const supabase = createClient();
   const { error } = await supabase.auth.signOut();
   console.log("error while logout: ", error);
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   console.log(user);
   await check_login_before_profile();
-}
+};
 
 export async function navigateToAccount() {
   redirect(`/account`);
@@ -86,10 +90,14 @@ export async function navigateToLogin() {
 export const addItem: () => Promise<void> = async () => {
   const supabase = createClient();
   const { data, error } = await supabase
-  .from('products')
-  .insert({ name: 'New Product', description: 'Description', price: 1, img: '/default_coffee.jpg' })
-  .select()
-  .single()
-  redirect(`account/` + data["id"])
-}
-
+    .from("products")
+    .insert({
+      name: "New Product",
+      description: "Description",
+      price: 1,
+      img: "/default_coffee.jpg",
+    })
+    .select()
+    .single();
+  redirect(`account/` + data["id"]);
+};

@@ -19,18 +19,18 @@ export default function PurchaseHistory({ purchases }: PurchaseHistoryProps) {
     <div>
       <h1>History:</h1>
       <div>
-      {purchases.length === 0 ? (
-        <p>No purchases found.</p>
-      ) : (
-        purchases.map((purchase) => (
-          <Purchase
-            key={purchase.id}
-            itemsIds={purchase.items}
-            date={new Date(purchase.date)}
-            status={purchase.status}
-          />
-        ))
-      )}
+        {purchases.length === 0 ? (
+          <p>No purchases found.</p>
+        ) : (
+          purchases.map((purchase) => (
+            <Purchase
+              key={purchase.id}
+              itemsIds={purchase.items}
+              date={new Date(purchase.date)}
+              status={purchase.status}
+            />
+          ))
+        )}
       </div>
     </div>
   );

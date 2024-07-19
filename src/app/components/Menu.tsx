@@ -11,41 +11,43 @@ type Product = {
   price: number;
 };
 type Product_Cart = {
-  id : string;
+  id: string;
   amount: number;
-}
+};
 // cart: {[{id:0}], promo: "asd"}
 type Data = {
   cart: {
     promo: string;
     products: Product_Cart[];
-  }
-}
+  };
+};
 type Props = {
   products: Product[];
 };
 
 export default async function Menu({ products }: Props) {
-  async function checkCart(product_id : string): Promise<number>{
+  async function checkCart(product_id: string): Promise<number> {
     const supabase = createClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    if (user!=undefined){
+    if (user != undefined) {
       let { data, error } = await supabase
-      .from("profiles")
-      .select()
-      .eq("id", user?.id)
-      .single();
-      console.log(data['cart'] as Data);
+        .from("profiles")
+        .select()
+        .eq("id", user?.id)
+        .single();
+      console.log(data["cart"] as Data);
       console.log(error);
       let amount = 0;
-      (data['cart'] as Data).cart.products.map(async (product:Product_Cart)=> {
-        if (product.id == product_id){
-          console.log("id: ", product.id,"Amount in menu: ", product.amount);
-          amount = product.amount;
-        }
-      })
+      (data["cart"] as Data).cart.products.map(
+        async (product: Product_Cart) => {
+          if (product.id == product_id) {
+            console.log("id: ", product.id, "Amount in menu: ", product.amount);
+            amount = product.amount;
+          }
+        },
+      );
       return amount;
     }
     return 0;
@@ -54,7 +56,6 @@ export default async function Menu({ products }: Props) {
     console.error("Products prop is not an array");
     return <div>Error: Products prop is not an array</div>;
   }
-  console.log("check cart test: ",await checkCart("1"));
   return (
     <div>
       <div className={styles.main_div}>

@@ -115,7 +115,9 @@ export default function AccountForm({ user }: { user: User | null }) {
         >
           {loading ? "Loading ..." : "Update"}
         </button>
-        <button className="button secondary" onClick={() => signOut()}>Sign Out</button>
+        <button className="button secondary" onClick={() => signOut()}>
+          Sign Out
+        </button>
       </div>
     </div>
   );

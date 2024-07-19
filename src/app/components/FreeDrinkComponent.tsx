@@ -75,6 +75,5 @@ export default function FreeDrinkComponent({
         <button className="button">Edit Profile</button>
       </Link>
     </div>
-    
   );
 }

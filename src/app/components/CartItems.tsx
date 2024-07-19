@@ -21,15 +21,17 @@ type ProductDisp = {
   price: number;
   amount: number;
 };
-let total : number = 0;
-export function getTotal() : number{
+let total: number = 0;
+export function getTotal(): number {
   return total;
 }
 
 export function setTotal(params: number) {
   total = params;
 }
-export default async function CartItems(onChange : { onChange: () => React.JSX.Element; }) {
+export default async function CartItems(onChange: {
+  onChange: () => React.JSX.Element;
+}) {
   const supabase = createClient();
   let cart: Data;
   const {
@@ -52,7 +54,6 @@ export default async function CartItems(onChange : { onChange: () => React.JSX.E
     }
 
     cart = data.cart as Data;
-    // console.log(cart.cart.products);
 
     const products = await Promise.all(
       cart.cart.products.map(async (product) => {
@@ -61,31 +62,40 @@ export default async function CartItems(onChange : { onChange: () => React.JSX.E
           .select()
           .eq("id", product.id)
           .single();
-        
+
         if (error) {
           console.error("Error fetching product:", error);
           return null;
         }
-        let help : ProductDisp = data as ProductDisp;
+        let help: ProductDisp = data as ProductDisp;
         help.amount = product.amount;
         return help as ProductDisp;
-      })
+      }),
     );
 
-    const validProducts = products.filter((product) => product !== null) as ProductDisp[];
+    const validProducts = products.filter(
+      (product) => product !== null,
+    ) as ProductDisp[];
 
     return (
       <>
-      <div className="products in cart" style={{display: "block"}}>
-        {validProducts.length > 0 ? (
-          validProducts.map((product: ProductDisp) => (
-            <div key={product.id}>
-              <CartItem id={product.id} name={product.name} img={product.img} price={product.price.toString()} amount={product.amount} total = {total} />
-            </div>
-          ))
-        ) : (
-          <p>No items in the cart</p>
-        )}
+        <div className="products in cart" style={{ display: "block" }}>
+          {validProducts.length > 0 ? (
+            validProducts.map((product: ProductDisp) => (
+              <div key={product.id}>
+                <CartItem
+                  id={product.id}
+                  name={product.name}
+                  img={product.img}
+                  price={product.price.toString()}
+                  amount={product.amount}
+                  total={total}
+                />
+              </div>
+            ))
+          ) : (
+            <p>No items in the cart</p>
+          )}
         </div>
       </>
     );
