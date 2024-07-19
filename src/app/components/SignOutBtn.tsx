@@ -1,6 +1,6 @@
 "use client";
 import { signOut } from "./actions";
-import styles from "@/src/app/components/css/MenuItem.module.css"
+import styles from "@/src/app/components/css/MenuItem.module.css";
 
 export default function SignOutBtn() {
   return (

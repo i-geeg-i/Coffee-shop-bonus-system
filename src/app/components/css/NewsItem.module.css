@@ -1,11 +1,11 @@
 .news_item {
-  background-color: #EBFFC9;
+  background-color: #ebffc9;
   min-height: 320px;
   margin: auto;
   border-radius: 30px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 5%;
   margin-top: 100px;
@@ -19,8 +19,7 @@
 }
 
 .item_pic {
-  
-  max-width: 200px; 
+  max-width: 200px;
   border-radius: 20px;
   box-shadow: 3px 3px 10px gray;
   margin: 5%;
@@ -28,7 +27,7 @@
 
 .btn {
   background-color: white;
-  color: #6CA900;
+  color: #6ca900;
   border-radius: 15px;
   width: 17rem;
   max-width: 100%;

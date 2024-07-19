@@ -1,5 +1,5 @@
 .main_block {
-  background-color: #EBFFC9;
+  background-color: #ebffc9;
   color: black;
   font-family: "Roboto", sans-serif;
   width: 95%;
@@ -53,7 +53,6 @@
   font-style: normal;
   margin: 20px;
 }
-
 
 .right_block_edit .submit_btn {
   background-color: black;
@@ -207,7 +206,7 @@
 
 .btn {
   background-color: white;
-  color: #6CA900;
+  color: #6ca900;
   border-radius: 15px;
   border-width: 0;
   width: 17rem;

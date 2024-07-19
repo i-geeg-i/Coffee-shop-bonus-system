@@ -1,5 +1,5 @@
 .menu_item {
-  background-color: #EBFFC9;
+  background-color: #ebffc9;
   align-items: center;
   text-align: center;
 
@@ -27,7 +27,6 @@
   cursor: pointer;
   justify-self: center;
   margin: 10px 20px 10px 20px;
-
 }
 
 .item_name {
@@ -37,7 +36,7 @@
 
 .btn {
   background-color: white;
-  color: #6CA900;
+  color: #6ca900;
   border-radius: 15px;
   border-width: 0;
   width: 17rem;
@@ -69,7 +68,7 @@
 
 .change_btn {
   background-color: white;
-  color: #6CA900;
+  color: #6ca900;
   border-radius: 30px;
   border-width: 0;
   width: 5rem;
