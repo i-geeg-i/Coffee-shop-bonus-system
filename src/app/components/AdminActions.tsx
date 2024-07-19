@@ -25,9 +25,7 @@ export default async function AdminActions() {
         console.log("Error fetching menu data:", error);
         return <div>No items available now</div>;
       }
-      // console.log("Data fetched:", data);
-    
-      // Check if the data is an array
+      
       if (!Array.isArray(data)) {
         console.error("Invalid data format:", data);
         return <div>No items available now</div>;

@@ -19,11 +19,10 @@ export default function NewsList({news}: News) {
     return (
         <div>
             {news.map((newsItem) => (
-                <div>
+                <div key={newsItem.id}>
                     {newsItem.image_position === "right" ? 
                     (
                         <NewsItemRight title={newsItem.title} 
-                        key={newsItem.id}
                         img={newsItem.image_url}
                         info={newsItem.body}
                         buttonInfo={newsItem.button_text}
@@ -31,7 +30,6 @@ export default function NewsList({news}: News) {
                     ) : 
                     (
                         <NewsItemLeft title={newsItem.title} 
-                        key={newsItem.id}
                         img={newsItem.image_url}
                         info={newsItem.body}
                         buttonInfo={newsItem.button_text}
