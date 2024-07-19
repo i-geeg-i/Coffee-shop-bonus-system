@@ -2,6 +2,7 @@ import NewsItemLeft from "./NewsItemLeft"
 import NewsItemRight from "./NewsItemRight"
 
 interface NewsItem {
+    id: number,
     title: string, 
     body: string, 
     button_text: string, 
@@ -22,6 +23,7 @@ export default function NewsList({news}: News) {
                     {newsItem.image_position === "right" ? 
                     (
                         <NewsItemRight title={newsItem.title} 
+                        key={newsItem.id}
                         img={newsItem.image_url}
                         info={newsItem.body}
                         buttonInfo={newsItem.button_text}
@@ -29,6 +31,7 @@ export default function NewsList({news}: News) {
                     ) : 
                     (
                         <NewsItemLeft title={newsItem.title} 
+                        key={newsItem.id}
                         img={newsItem.image_url}
                         info={newsItem.body}
                         buttonInfo={newsItem.button_text}
