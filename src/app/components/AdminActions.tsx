@@ -5,6 +5,7 @@ import AdminItem from "./AdminItem";
 import AddItemBtn from "./AddItemBtn";
 import { supabase } from "@/src/supabase/supabaseClient";
 import { signOut } from "./actions";
+import SignOutBtn from "./SignOutBtn";
 
 type Product = {
   id: number;
@@ -45,9 +46,7 @@ export default async function AdminActions() {
           ))}
         </div>
 
-        <button className="button secondary" onClick={() => signOut()}>
-          Sign Out
-        </button>
+        <SignOutBtn />
         <AddItemBtn />
       </div>
     </>
