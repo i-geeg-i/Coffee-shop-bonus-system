@@ -31,7 +31,6 @@ export default async function Menu({ products }: Props) {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    console.log("AXAXAXAAXXAXA");
     if (user!=undefined){
       let { data, error } = await supabase
       .from("profiles")

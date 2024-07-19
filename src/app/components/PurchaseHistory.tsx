@@ -1,14 +1,13 @@
-'use client'
-import { UUID } from "crypto";
+"use client";
+
+import React from "react";
 import Purchase from "./Purchase";
-import { supabase } from "@/src/supabase/supabaseClient";
 
 interface Purchase {
   id: number;
   items: number[];
   date: Date;
   status: string;
-  user_id: UUID;
 }
 
 interface PurchaseHistoryProps {
@@ -17,17 +16,22 @@ interface PurchaseHistoryProps {
 
 export default function PurchaseHistory({ purchases }: PurchaseHistoryProps) {
   return (
-    <div className="">
-      {purchases.map(purchase => (
-        <Purchase
-          key={purchase.id}
-          id={purchase.id}
-          itemsIds={purchase.items}
-          date={purchase.date}
-          status={purchase.status}
-          user_id={purchase.user_id}
-        />
-      ))}
+    <div>
+      <h1>History:</h1>
+      <div>
+      {purchases.length === 0 ? (
+        <p>No purchases found.</p>
+      ) : (
+        purchases.map((purchase) => (
+          <Purchase
+            key={purchase.id}
+            itemsIds={purchase.items}
+            date={new Date(purchase.date)}
+            status={purchase.status}
+          />
+        ))
+      )}
+      </div>
     </div>
   );
 }

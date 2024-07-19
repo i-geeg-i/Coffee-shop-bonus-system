@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect, RedirectType } from "next/navigation";
+import { redirect } from "next/navigation";
 import { createClient } from "../../supabase/server";
 import { supabase } from "@/src/supabase/supabaseClient";
 
@@ -28,15 +28,10 @@ export async function login(formData: FormData) {
 export async function check_login_before_profile() {
   console.log("Checking login status...");
   
-  // Create a Supabase client
-  // const supabase = createClient();
-
   // Fetch the user from Supabase authentication
   const { data: { user } } = await supabase.auth.getUser();
   
   console.log(user);
-  // Log the user object to the console
-  // console.log(user);
 
   // Check if the user exists
   if (user) {
@@ -77,8 +72,7 @@ export async function signup(formData: FormData) {
 export const signOut: () => Promise<void> = async () => {
   const supabase = createClient();
   const { error } = await supabase.auth.signOut();
-  console.log("SOSI PISKA");
-  console.log("error while logiut: ", error);
+  console.log("error while logout: ", error);
   const { data: { user } } = await supabase.auth.getUser();
   console.log(user);
   await check_login_before_profile();

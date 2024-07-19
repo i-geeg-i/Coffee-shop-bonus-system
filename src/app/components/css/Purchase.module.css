@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #f5f7e9;
+
+  }
+  
+  .checkmark-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: auto;
+    background-color: #000;
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .status-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding-left: 20px;
+  }
+  
+  .date {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .item-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .item {
+    margin-bottom: 5px;
+  }
+  
+  .total,
+  .bonus {
+    margin-top: 10px;
+  }
+  
+  .bonus-value {
+    color: green;
+  }
+  
+  .refresh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .refresh-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  

@@ -1,8 +1,6 @@
 "use server";
-import { useEffect } from "react";
 import Link from "next/link";
 import Login from "../components/Login";
-import { check_login_before_profile } from "../components/actions";
 import { createClient } from "@/src/supabase/server";
 import { redirect } from "next/navigation";
 

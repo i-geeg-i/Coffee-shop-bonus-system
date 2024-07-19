@@ -1,7 +1,7 @@
 'use client'
 import { supabase } from "@/src/supabase/supabaseClient";
-import { UUID } from "crypto";
 import React, { useEffect, useState } from 'react';
+import styles from './css/purchase.module.css';
 
 interface Product {
   id: number;
@@ -12,16 +12,14 @@ interface Product {
 }
 
 interface PurchaseProps {
-  id: number;
   itemsIds: number[];
   date: Date;
   status: string;
-  user_id: UUID;
 }
 
-export default function Purchase({ id, itemsIds, date, status, user_id }: PurchaseProps) {
+export default function Purchase({ itemsIds, date, status }: PurchaseProps) {
   const [items, setItems] = useState<Product[]>([]);
-
+  
   useEffect(() => {
     const fetchItems = async () => {
       const fetchedItems: Product[] = [];
@@ -30,7 +28,7 @@ export default function Purchase({ id, itemsIds, date, status, user_id }: Purcha
         try {
           const { data, error } = await supabase
             .from('products')
-            .select('*')
+            .select()
             .eq('id', itemId)
             .single();
 
@@ -57,29 +55,42 @@ export default function Purchase({ id, itemsIds, date, status, user_id }: Purcha
   const totalPrice = getTotalPrice();
   const bonus = totalPrice * 0.05;
 
+  const getStatusImage = (status: string) => {
+    switch (status) {
+      case 'done':
+        return '/done.png'; // Replace with actual image path
+      case 'in progress':
+        return '/in_progress.png'; // Replace with actual image path
+      case 'cancelled':
+        return '/cancelled.png'; // Replace with actual image path
+      default:
+        return '';
+    }
+  };
+
   return (
-    <div className="flex rounded-lg p-3 w-3/4">
-      <div className={`flex items-center justify-center rounded-lg w-2/5 h-auto ${status}`}>
-        <span className="checkmark">✔</span>
+    <div className={styles.container}>
+      <div className={styles['checkmark-container']}>
+        <img src={getStatusImage(status)} alt={status} className={styles['status-icon']} />
       </div>
-      <div className="flex-grow px-3">
-        <div className="date">Order {date.toDateString()}</div>
-        <ul>
+      <div className={styles.content}>
+        <div className={styles.date}>Order {date.toLocaleDateString()}</div>
+        <ul className={styles['item-list']}>
           {items.map(item => (
-            <li key={item.id}>
+            <li key={item.id} className={styles.item}>
               {item.name} {item.price}₽
             </li>
           ))}
         </ul>
-        <div className="total">
+        <div className={styles.total}>
           Total: {totalPrice}₽
         </div>
-        <div className="bonus">
-          Bonuses: <span className="bonus-value">{bonus}</span>
+        <div className={styles.bonus}>
+          Bonuses: <span className={styles['bonus-value']}>{bonus}</span>
         </div>
       </div>
-      <div className="refresh">
-        <span className="refresh-icon">↻</span>
+      <div className={styles.refresh}>
+        <span className={styles['refresh-icon']}>↻</span>
       </div>
     </div>
   );

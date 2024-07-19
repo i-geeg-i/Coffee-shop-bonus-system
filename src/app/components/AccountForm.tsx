@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "../../supabase/client";
 import { type User } from "@supabase/supabase-js";
 import Avatar from "./Avatar";
-import { navigateToAccount } from "./actions";
+import { navigateToAccount, signOut } from "./actions";
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClient();
@@ -115,11 +115,7 @@ export default function AccountForm({ user }: { user: User | null }) {
         >
           {loading ? "Loading ..." : "Update"}
         </button>
-        <form action="/auth/signout" method="post">
-          <button className="button secondary" type="submit">
-            Sign out
-          </button>
-        </form>
+        <button className="button secondary" onClick={() => signOut()}>Sign Out</button>
       </div>
     </div>
   );
