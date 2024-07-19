@@ -3,7 +3,7 @@ name: Continuous Integration via GitHub Actions
 on:
   push:
     branches:
-      - main
+      - polina
 
 jobs:
   check:
