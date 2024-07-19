@@ -88,16 +88,15 @@ export default function Item({ params }: Props) {
           else{
             user_cart.cart.products.push(product);
           }
-          if (!contains){
-            const product : Product = {
-              id: params.id,
-              amount: 1
-            }
-            setCount(1);
-            user_cart.cart.products.push(product);
-          }
         })
-        
+        if (!contains){
+          const product : Product = {
+            id: params.id,
+            amount: 1
+          }
+          setCount(1);
+          user_cart.cart.products.push(product);
+        }
         const {error: update_error} = await supabase
         .from('profiles')
         .update({ cart: user_cart})
