@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+=======
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 .footer {
   position: relative;
   bottom: 0;
@@ -11,12 +25,18 @@
   margin-bottom: 0;
   margin-left: 0;
   margin-right: 0;
+<<<<<<< HEAD
   bottom: 0;
 
+=======
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: large;
   font-style: normal;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   padding: 1rem;
 }

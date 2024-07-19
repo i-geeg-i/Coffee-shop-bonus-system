@@ -2,23 +2,51 @@
   background-color: green;
   max-width: 100%;
 }
+<<<<<<< HEAD
+=======
+h1{
+  color: #424739;
+}
+p{
+  color: #424739;
+
+}
+h2{
+  color: #424739;
+
+}
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 .main-title {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-align: center;
   /* font-family: Georgia, 'Times New Roman', Times, serif; */
+<<<<<<< HEAD
 }
 body {
   margin: 0;
 }
+=======
+}body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 .header {
   background-color: rgb(99, 239, 153);
   border-bottom: 1px solid #ccc;
   padding: 0.5em 1em;
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
 }
+=======
+  align-items: center;
+}
+
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 .nav {
   text-decoration: none;
   color: black;
@@ -27,6 +55,10 @@ body {
   display: inline-block;
   margin: 1.4em 1em 1em 1em;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 .nav:hover {
   text-decoration: underline;
 }
@@ -37,6 +69,7 @@ body {
   background-color: #a1c233;
   border-radius: 50%;
   border-width: 0;
+<<<<<<< HEAD
   margin-right: 0;
   margin-top: 0;
   margin-bottom: auto;
@@ -50,6 +83,19 @@ body {
 .cart_btn img {
   width: 40px;
   height: 40px;
+=======
+  box-shadow: 3px 3px 10px gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 20%;
+}
+
+.cart_btn img {
+  width: 35px;
+  height: 35px;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 
 .button {
@@ -66,6 +112,20 @@ body {
   border-radius: 8px;
 }
 
+<<<<<<< HEAD
+=======
+.container {
+  background-color: green;
+  max-width: 100%;
+}
+
+.main-title {
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 .form-widget {
   width: 80%;
   margin: auto;
@@ -84,13 +144,23 @@ h1 {
 
 .profile-form-container {
   display: flex;
+<<<<<<< HEAD
   justify-content: space-between;
   align-items: center;
   justify-content: center;
+=======
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 
 .profile-form {
   width: 60%;
+<<<<<<< HEAD
+=======
+  font-style: normal;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 
 .form-group {
@@ -117,12 +187,20 @@ h1 {
 }
 
 .button.primary {
+<<<<<<< HEAD
   background-color: #4caf50;
+=======
+  background-color: #a1c233; 
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   color: white;
 }
 
 .button.primary:hover {
+<<<<<<< HEAD
   background-color: #45a049;
+=======
+  background-color: #8aa72c; 
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 
 .button.secondary {
@@ -134,3 +212,58 @@ h1 {
 .button.secondary:hover {
   background-color: #e53935;
 }
+<<<<<<< HEAD
+=======
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .cart_btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10%;
+  }
+
+  .profile-form {
+    width: 90%;
+  }
+
+  .form-widget {
+    width: 95%;
+  }
+}
+
+/* Стили для news_item */
+.news_item {
+  background-color: #EBFFC9;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Добавлено для переноса элементов */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px gray;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+}
+
+.item_pic {
+  width: 200px;
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px gray;
+  margin: 10px;
+}
+
+.main_info {
+  text-align: center;
+  margin: 10%;
+}
+
+
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)

@@ -1,4 +1,5 @@
 .news_item {
+<<<<<<< HEAD
   background-color: #f6ffb8;
   width: 90%;
   margin: auto;
@@ -9,11 +10,29 @@
 
   font-family: "Roboto", sans-serif;
   font-weight: bold;
+=======
+  background-color: #EBFFC9;
+  min-height: 320px;
+  margin: auto;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Добавлено для переноса элементов */
+  justify-content: center; /* Добавлено для центрирования элементов */
+  margin-bottom: 5%;
+  margin-top: 100px;
+  margin-left: 20%;
+  margin-right: 20%;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   font-style: normal;
   font-size: x-large;
 }
 
 .item_pic {
+<<<<<<< HEAD
   width: 17rem;
   border-radius: 20px;
   box-shadow: 3px 3px 10px gray;
@@ -30,6 +49,26 @@
   height: 2.5rem;
   box-shadow: 3px 3px 10px gray;
   cursor: pointer;
+=======
+  
+  max-width: 200px; /* Ограничиваем максимальную ширину */
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px gray;
+  margin: 5%;
+}
+
+.btn {
+  background-color: white;
+  color: #6CA900;
+  border-radius: 15px;
+  width: 17rem;
+  max-width: 100%; /* Ограничиваем максимальную ширину */
+  height: 3.5rem;
+  box-shadow: 3px 3px 10px gray;
+  cursor: pointer;
+  border: none;
+  margin-top: 30px;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 
   font-family: "Roboto", sans-serif;
   font-weight: bold;
@@ -41,4 +80,43 @@
   margin: 5%;
   text-align: center;
   width: 60%;
+<<<<<<< HEAD
+=======
+  max-width: 100%; /* Ограничиваем максимальную ширину */
+  word-wrap: break-word; /* Перенос слов */
+  flex: 1; /* Гибкость для заполнения пространства */
+}
+
+/* Медиа-запрос для изменения направления flex-контейнера при сужении экрана */
+@media (max-width: 768px) {
+  .news_item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main_info {
+    width: 90%; /* Занимает всю ширину */
+    margin-top: 0; /* Убираем верхний отступ */
+  }
+
+  .btn {
+    margin-top: 20px; /* Добавляем отступ сверху у кнопки */
+  }
+}
+
+/* Медиа-запрос для восстановления исходного состояния на больших экранах */
+@media (min-width: 769px) {
+  .news_item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .main_info {
+    width: 60%;
+  }
+
+  .btn {
+    margin-top: 30px;
+  }
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }

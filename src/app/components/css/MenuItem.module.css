@@ -1,5 +1,9 @@
 .menu_item {
+<<<<<<< HEAD
   background-color: #e7efb5;
+=======
+  background-color: #EBFFC9;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   align-items: center;
   text-align: center;
 
@@ -9,6 +13,7 @@
   font-size: x-large;
 
   width: 20rem;
+<<<<<<< HEAD
   height: 25rem;
 
   border-radius: 20px;
@@ -32,10 +37,34 @@
 .item_name {
   margin-top: 0.3rem;
   margin-bottom: 0.3rem;
+=======
+  height: 28rem;
+
+  border-radius: 20px;
+  margin: 0.7rem;
+  padding-top: 2rem;
+  display: inline-block;
+  box-shadow: 2px 2px 20px -3px gray;
+}
+
+.item_pic {
+  max-width: 250px;
+  max-height: 250px;
+  border-radius: 20px;
+  cursor: pointer;
+  justify-self: center;
+  margin: 10px 20px 10px 20px;
+
+}
+
+.item_name {
+  margin-top: 10px;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   text-align: center;
 }
 
 .btn {
+<<<<<<< HEAD
   background-color: black;
   color: #afca0b;
   border-radius: 30px;
@@ -43,6 +72,15 @@
   width: 17rem;
   height: 2.5rem;
   box-shadow: 3px 3px 10px gray;
+=======
+  background-color: white;
+  color: #6CA900;
+  border-radius: 15px;
+  border-width: 0;
+  width: 17rem;
+  height: 3rem;
+  box-shadow: 2px 2px 10px -3px gray;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   cursor: pointer;
 
   font-family: "Roboto", sans-serif;
@@ -52,13 +90,22 @@
 }
 
 .change_btn {
+<<<<<<< HEAD
   background-color: black;
   color: #afca0b;
+=======
+  background-color: white;
+  color: #6CA900;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   border-radius: 30px;
   border-width: 0;
   width: 5rem;
   height: 2.5rem;
+<<<<<<< HEAD
   box-shadow: 3px 3px 10px gray;
+=======
+  box-shadow: 2px 2px 10px -3px gray;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   cursor: pointer;
 
   font-family: "Roboto", sans-serif;

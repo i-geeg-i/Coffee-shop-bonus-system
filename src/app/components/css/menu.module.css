@@ -2,14 +2,49 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
+=======
+  margin-top: 50px;
+  margin-bottom: 30px;
+  flex-direction: column; /* Добавлено для центрирования по вертикали */
+  align-items: center; /* Центрирование по горизонтали */
+  justify-content: center;
+}
+
+.infoT{
+  background-color: #EBFFC9;
+width: 45%;
+padding-left: 20px;
+padding-right: 20px;
+margin: 0 auto; /* Центрирование блока по горизонтали */
+padding: 20px; /* Добавлено для улучшения внешнего вида */
+border-radius: 20px; /* Добавлено для закругленных углов */
+font-family: "Roboto", sans-serif;
+font-weight: bold;
+font-style: normal;
+font-size:large;
+margin-bottom: 50px;
+}
+.infoT p{
+  font-weight: normal;
+
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 
 .items_div {
   justify-content: left;
+<<<<<<< HEAD
 }
 
 .btn {
   background-color: black;
+=======
+  gap: 20px; /* Добавлено для расстояния между элементами */
+}
+
+.btn {
+  background-color: white;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   color: #afca0b;
   border-radius: 30px;
   border-width: 0;

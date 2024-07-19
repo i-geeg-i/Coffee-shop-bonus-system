@@ -8,7 +8,10 @@ export default async function Home() {
   }
   return (
     <div>
+<<<<<<< HEAD
       <h1 className="main-title">CoffeeIn</h1>
+=======
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
       <NewsList {...{ news }} />
     </div>
   );

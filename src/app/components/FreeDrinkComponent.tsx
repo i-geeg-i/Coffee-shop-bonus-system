@@ -1,5 +1,9 @@
 import Link from "next/link";
 import QRCodeGenerator from "./QRCodeGenerator";
+<<<<<<< HEAD
+=======
+import styles from "./css/FreeDrinkComponent.module.css"
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 
 export default function FreeDrinkComponent({
   id,
@@ -14,6 +18,7 @@ export default function FreeDrinkComponent({
 }) {
   const rublesNeeded = 250 - bonuses;
   return (
+<<<<<<< HEAD
     <div
       style={{
         display: "flex",
@@ -29,11 +34,19 @@ export default function FreeDrinkComponent({
       }}
     >
       <div style={{ marginRight: "20px" }}>
+=======
+    <div className={styles.infoBlock}>
+      <div className={styles.qr}>
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
         <QRCodeGenerator {...{ id }} />
       </div>
       <div>
         <div style={{ fontSize: "18px", marginBottom: "10px" }}>
+<<<<<<< HEAD
           Good morning, {full_name}!
+=======
+          Hello, {full_name}!
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
         </div>
         <div
           style={{

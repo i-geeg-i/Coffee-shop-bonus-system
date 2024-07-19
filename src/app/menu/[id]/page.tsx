@@ -2,8 +2,11 @@
 import { createClient } from "@/src/supabase/server";
 import Item from "../../components/item";
 import { supabase } from "@/src/supabase/supabaseClient";
+<<<<<<< HEAD
 import type { Metadata, ResolvingMetadata } from "next";
 
+=======
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 type Product = {
   id: string;
   amount: number;
@@ -14,6 +17,7 @@ type Data = {
     products: Product[];
   };
 };
+<<<<<<< HEAD
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
@@ -41,6 +45,8 @@ export async function generateMetadata(
   };
 }
 
+=======
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 export default async function ItemPage({ params }: { params: { id: string } }) {
   async function checkCart(product_id: string): Promise<number> {
     const supabase = createClient();
@@ -57,7 +63,11 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
       console.log(data["cart"] as Data);
       console.log(error);
       let amount = 0;
+<<<<<<< HEAD
       (data["cart"] as Data).cart.products.map((product: Product) => {
+=======
+      (data["cart"] as Data).cart.products.map(async (product: Product) => {
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
         if (product.id == product_id) {
           console.log("Amount in menu: ", product.amount);
           amount = product.amount;
@@ -68,16 +78,21 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
     return 0;
   }
   const { id } = params;
+<<<<<<< HEAD
   const { data, error } = await supabase
     .from("products")
     .select()
     .eq("id", id)
     .single();
+=======
+  const { data, error } = await supabase.from("products").select().eq("id", id);
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   if (error) {
     console.log("There is some trouble with item. Get next response: ", error);
     return <div>No such item</div>;
   }
 
+<<<<<<< HEAD
   const item = data;
 
   return (
@@ -95,4 +110,19 @@ export default async function ItemPage({ params }: { params: { id: string } }) {
       />
     </>
   );
+=======
+  return data.map(async (item: any) => (
+    <Item
+      key={item.id}
+      params={{
+        id: item.id,
+        name: item.name,
+        picSrc: item.img,
+        price: item.price,
+        description: item.description,
+        amount: await checkCart(item.id),
+      }}
+    />
+  ));
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }

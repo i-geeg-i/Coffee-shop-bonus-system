@@ -25,11 +25,16 @@ export default function EditItem({ item }: Props) {
   const [name, setName] = useState<string>(item["name"] as string);
   const [pic, setPic] = useState<string>(item["picSrc"] as string);
   const picSrc: string = item["picSrc"] as string;
+<<<<<<< HEAD
   const [price, setPrice] = useState<number>(parseFloat(item["price"]));
+=======
+  const [price, setPrice] = useState<string>(item["price"] as string);
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   const [description, setDescription] = useState<string>(
     item["description"] as string,
   );
 
+<<<<<<< HEAD
   // Added state for error messages
   const [errors, setErrors] = useState({
     name: "",
@@ -86,6 +91,36 @@ export default function EditItem({ item }: Props) {
       return;
     }
 
+=======
+  const handleNameChange: (e: any) => void = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setName(e.target.value);
+  };
+
+  const handlePicChange: (e: any) => void = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setPic(e.target.value);
+  };
+
+  const handleDescriptionChange: (e: any) => void = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setDescription(e.target.value);
+  };
+
+  const handlePriceChange: (e: any) => void = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setPrice(e.target.value);
+  };
+
+  const handleSubmit: (e: any) => Promise<void> = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
+    e.preventDefault();
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
     const supabase = createClient();
     const {
       data: { user },
@@ -130,6 +165,10 @@ export default function EditItem({ item }: Props) {
     e: React.FormEvent<HTMLFormElement>,
   ) => {
     e.preventDefault();
+<<<<<<< HEAD
+=======
+    console.log("Hi there! Button to submit clicked!!! Action!");
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
     const supabase = createClient();
     const {
       data: { user },
@@ -160,6 +199,10 @@ export default function EditItem({ item }: Props) {
           console.log("Error", response);
           navigateToAccount();
         } else {
+<<<<<<< HEAD
+=======
+          console.log("Huesos");
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
           navigateToLogin();
         }
       }
@@ -183,18 +226,27 @@ export default function EditItem({ item }: Props) {
             id="name"
             onChange={handleNameChange}
           ></input>
+<<<<<<< HEAD
           {errors.name && <div className={styles.error}>{errors.name}</div>}{" "}
           {/* Display error message for name */}
+=======
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
           <br />
           <label htmlFor="pic">Local picture src:</label>
           <input
             className={styles.input}
             value={pic}
+<<<<<<< HEAD
             id="pic"
             onChange={handlePicChange}
           ></input>
           {errors.pic && <div className={styles.error}>{errors.pic}</div>}{" "}
           {/* Display error message for pic */}
+=======
+            id="name"
+            onChange={handlePicChange}
+          ></input>
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
           <br />
           <label htmlFor="description">Description:</label>
           <textarea
@@ -204,15 +256,19 @@ export default function EditItem({ item }: Props) {
             id="description"
             onChange={handleDescriptionChange}
           ></textarea>
+<<<<<<< HEAD
           {errors.description && (
             <div className={styles.error}>{errors.description}</div>
           )}{" "}
           {/* Display error message for description */}
+=======
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
           <br />
           <label htmlFor="price">Price:</label>
           <input
             className={styles.input}
             value={price}
+<<<<<<< HEAD
             type="number"
             id="price"
             onChange={handlePriceChange}
@@ -220,6 +276,12 @@ export default function EditItem({ item }: Props) {
           ₽{errors.price && <div className={styles.error}>{errors.price}</div>}{" "}
           {/* Display error message for price */}
           <br />
+=======
+            id="price"
+            onChange={handlePriceChange}
+          ></input>{" "}
+          ₽ <br />
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
           <button className={styles.delete_btn} onClick={handleDelete}>
             Delete
           </button>

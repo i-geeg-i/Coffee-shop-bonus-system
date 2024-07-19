@@ -1,8 +1,16 @@
 .header {
+<<<<<<< HEAD
   /* Change the color to match the image */
   display: flex;
   justify-content: center;
   padding: 10px;
+=======
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  
+  
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 
 .container {
@@ -11,13 +19,22 @@
   gap: 20px;
   padding: 10px;
   border-radius: 20px;
+<<<<<<< HEAD
   background-color: #a1c233; /* Adjust this color if necessary */
+=======
+  background-color: #a1c233; 
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
   min-width: 40%;
   width: fit-content;
   max-height: 3rem;
   height: fit-content;
   justify-content: center;
   box-shadow: 3px 3px 10px gray;
+<<<<<<< HEAD
+=======
+  align-items: center;
+  margin-top: 30px;
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 
 .icon {
@@ -26,12 +43,20 @@
 }
 
 .icon img {
+<<<<<<< HEAD
   width: 2.3rem; /* Adjust size as needed */
   height: auto; /* Adjust size as needed */
   border: solid 2px black;
   border-radius: 50%;
   margin-left: 0;
   padding: 3px;
+=======
+  width: 2.3rem; 
+  height: 35px; 
+  margin-left: 0;
+  padding: 3px;
+ 
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
 }
 @media only screen and (max-width: 930px) {
   .container {

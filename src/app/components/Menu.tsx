@@ -59,10 +59,17 @@ export default async function Menu({ products }: Props) {
   return (
     <div>
       <div className={styles.main_div}>
+<<<<<<< HEAD
         <TextField
           header="Here is our menu!"
           text="By the way, you may order it from the website"
         />
+=======
+        <div className={styles.infoT}>
+        <h2>Here is our menu!</h2>
+        <p>By the way, you may order it from the website</p>
+        </div>
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
         <div className={styles.items_div}>
           {products.map(async (product) => (
             <MenuItem

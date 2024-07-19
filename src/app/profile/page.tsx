@@ -21,9 +21,13 @@ export default async function ProfilePage() {
   } else {
     return (
       <div>
+<<<<<<< HEAD
         <h1 className="main-title">Profile</h1>
         <Login />
         <Link href="/">Go back</Link>
+=======
+        <Login />
+>>>>>>> 2cbf9e6 (Добавлены изменения из zip-архива)
       </div>
     );
   }
