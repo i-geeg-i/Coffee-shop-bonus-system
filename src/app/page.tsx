@@ -8,7 +8,6 @@ export default async function Home() {
   }
   return (
     <div>
-      <h1 className="main-title">CoffeeIn</h1>
       <NewsList {...{ news }} />
     </div>
   );

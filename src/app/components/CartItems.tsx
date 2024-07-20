@@ -80,7 +80,7 @@ export default async function CartItems(onChange: {
 
     return (
       <>
-        <div className="products in cart" style={{ display: "block" }}>
+        <div className="products in cart" style={{ display: "block", width: "100%" }}>
           {validProducts.length > 0 ? (
             validProducts.map((product: ProductDisp) => (
               <div key={product.id}>

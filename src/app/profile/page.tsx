@@ -21,9 +21,7 @@ export default async function ProfilePage() {
   } else {
     return (
       <div>
-        <h1 className="main-title">Profile</h1>
         <Login />
-        <Link href="/">Go back</Link>
       </div>
     );
   }

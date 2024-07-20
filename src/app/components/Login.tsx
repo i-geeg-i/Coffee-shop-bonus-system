@@ -89,7 +89,8 @@ const Login = () => {
         )}
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          
+          className="button"
         >
           {isLogin ? "Login" : "Register"}
         </button>
@@ -98,7 +99,7 @@ const Login = () => {
         {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
         <button
           onClick={() => setIsLogin(!isLogin)}
-          className="text-blue-500 hover:underline"
+          className="button"
         >
           {isLogin ? "Register" : "Login"}
         </button>

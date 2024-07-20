@@ -219,3 +219,7 @@
   font-style: normal;
   font-size: x-large;
 }
+.textarea{
+  width: 80%;
+  margin: auto;
+}
