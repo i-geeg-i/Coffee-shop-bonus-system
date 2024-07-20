@@ -87,20 +87,13 @@ const Login = () => {
             />
           </div>
         )}
-        <button
-          type="submit"
-          
-          className="button"
-        >
+        <button type="submit" className="button">
           {isLogin ? "Login" : "Register"}
         </button>
       </form>
       <p className="mt-4 text-center">
         {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-        <button
-          onClick={() => setIsLogin(!isLogin)}
-          className="button"
-        >
+        <button onClick={() => setIsLogin(!isLogin)} className="button">
           {isLogin ? "Register" : "Login"}
         </button>
       </p>

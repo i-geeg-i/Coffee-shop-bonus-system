@@ -197,7 +197,7 @@ export default function EditItem({ item }: Props) {
           {/* Display error message for pic */}
           <br />
           <label htmlFor="description">Description:</label>
-          <br/>
+          <br />
           <textarea
             className={styles.textarea}
             cols={70}

@@ -155,7 +155,9 @@ export default function CartItem(params: Props) {
     <>
       {count > 0 && (
         <div className={styles.cart_item}>
-          <p className={styles.item_name}>{params.name} {params.price}₽</p>
+          <p className={styles.item_name}>
+            {params.name} {params.price}₽
+          </p>
           <div className={styles.changeForm}>
             <button className={styles.change_btn} onClick={removeFromCart}>
               -
