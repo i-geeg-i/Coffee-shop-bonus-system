@@ -1,0 +1,37 @@
+.osnovnoy {
+    align-items: center;
+    text-align: center;
+  
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: x-large;
+  
+    width: 100%;
+    height: fit-content;
+    margin: 0.7rem;
+    justify-content: space-between;
+    display: block;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px
+  }
+  
+  
+  .change_btn {
+    background-color: black;
+    color: #afca0b;
+    border-radius: 30px;
+    border-width: 0;
+    box-shadow: 3px 3px 10px gray;
+    cursor: pointer;
+    padding: 10px;
+  
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    font-size: x-large;
+    margin-left: auto;
+    margin-right: auto;
+  }
