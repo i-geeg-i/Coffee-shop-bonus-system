@@ -5,7 +5,7 @@ import { createClient } from "@/src/supabase/client";
 import { TotalProvider, useTotal } from "./useTotal";
 
 import styles from "./css/CartTotal.module.css";
-import { navigateToAccount } from "./actions"
+import { navigateToAccount } from "./actions";
 
 type Product = {
   id: string;
@@ -48,7 +48,9 @@ function CartTotalComponent() {
 
   useEffect(() => {
     updateOutside = setTotal;
-    return () => { updateOutside = null; };
+    return () => {
+      updateOutside = null;
+    };
   }, [setTotal]);
 
   const supabaseAuth = createClient();
@@ -56,7 +58,9 @@ function CartTotalComponent() {
   useEffect(() => {
     const fetchCartData = async () => {
       try {
-        const { data: { user } } = await supabaseAuth.auth.getUser();
+        const {
+          data: { user },
+        } = await supabaseAuth.auth.getUser();
 
         if (!user) {
           setError("You should login first!");
@@ -97,9 +101,14 @@ function CartTotalComponent() {
         });
 
         const products = await Promise.all(productPromises);
-        const validProducts = products.filter((product) => product !== null) as ProductDisp[];
-        const totalAmount = validProducts.reduce((acc, product) => acc + product.amount * product.price, 0);
-        console.log(validProducts)
+        const validProducts = products.filter(
+          (product) => product !== null,
+        ) as ProductDisp[];
+        const totalAmount = validProducts.reduce(
+          (acc, product) => acc + product.amount * product.price,
+          0,
+        );
+        console.log(validProducts);
         setTotal(totalAmount);
         setLoading(false);
       } catch (err) {
@@ -124,9 +133,11 @@ function CartTotalComponent() {
 }
 
 export default function CartTotal() {
-  async function onBuy(){
+  async function onBuy() {
     const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
     if (!user) {
       console.error("User not logged in.");
@@ -165,8 +176,13 @@ export default function CartTotal() {
       });
 
       const products = await Promise.all(productPromises);
-      const validProducts = products.filter((product) => product !== null) as ProductDisp[];
-      const totalCost = validProducts.reduce((acc, product) => acc + product.amount * product.price, 0);
+      const validProducts = products.filter(
+        (product) => product !== null,
+      ) as ProductDisp[];
+      const totalCost = validProducts.reduce(
+        (acc, product) => acc + product.amount * product.price,
+        0,
+      );
       const bonus = totalCost * 0.1;
       const newBonuses = (profileData.bonuses || 0) + bonus;
 
@@ -180,9 +196,10 @@ export default function CartTotal() {
           {
             items,
             date: new Date(),
-            status: "done"
+            status: "done",
           },
-        ]).select();
+        ])
+        .select();
 
       if (purchaseError) {
         console.error("Error inserting purchase data:", purchaseError);
@@ -194,17 +211,16 @@ export default function CartTotal() {
 
       await supabase
         .from("profiles")
-        .update({ 
+        .update({
           purchase_history: purchaseHistory,
           bonuses: newBonuses,
-          cart: {cart: { promo: "", products: [] }}
+          cart: { cart: { promo: "", products: [] } },
         })
         .eq("id", user.id);
 
       console.log("Purchase successful:", purchaseData);
       console.log("Cart cleared and bonuses added.");
       navigateToAccount();
-      
     } catch (error) {
       console.error("Error during purchase:", error);
     }
@@ -215,7 +231,9 @@ export default function CartTotal() {
       <TotalProvider>
         <CartTotalComponent />
       </TotalProvider>
-      <button onClick={onBuy} className={styles.change_btn}>Order</button>
+      <button onClick={onBuy} className={styles.change_btn}>
+        Order
+      </button>
     </div>
   );
 }

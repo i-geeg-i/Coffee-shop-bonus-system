@@ -7,7 +7,6 @@ interface Item {
   [key: string]: number;
 }
 
-
 interface Purchase {
   id: number;
   items: Item[];

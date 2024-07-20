@@ -1,4 +1,11 @@
-import { useState, useContext, createContext, ReactNode, Dispatch, SetStateAction } from "react";
+import {
+  useState,
+  useContext,
+  createContext,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
 interface TotalContextType {
   total: number;

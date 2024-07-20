@@ -27,7 +27,7 @@ export default function Purchase({ items, date, status }: PurchaseProps) {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const productIds = items.map(item => Object.keys(item)[0]);
+        const productIds = items.map((item) => Object.keys(item)[0]);
         const fetchedProducts = await Promise.all(
           productIds.map(async (productId) => {
             const { data, error } = await supabase
@@ -41,15 +41,20 @@ export default function Purchase({ items, date, status }: PurchaseProps) {
               return null;
             }
             return data as Product;
-          })
+          }),
         );
 
-        const validProducts = fetchedProducts.filter((product) => product !== null) as Product[];
-        const fetchedQuantities = items.reduce((acc, item) => {
-          const productId = parseInt(Object.keys(item)[0]);
-          acc[productId] = item[Object.keys(item)[0]];
-          return acc;
-        }, {} as { [key: number]: number });
+        const validProducts = fetchedProducts.filter(
+          (product) => product !== null,
+        ) as Product[];
+        const fetchedQuantities = items.reduce(
+          (acc, item) => {
+            const productId = parseInt(Object.keys(item)[0]);
+            acc[productId] = item[Object.keys(item)[0]];
+            return acc;
+          },
+          {} as { [key: number]: number },
+        );
 
         setProducts(validProducts);
         setQuantities(fetchedQuantities);
@@ -64,7 +69,7 @@ export default function Purchase({ items, date, status }: PurchaseProps) {
   const getTotalPrice = () => {
     return products.reduce(
       (total, product) => total + product.price * (quantities[product.id] || 1),
-      0
+      0,
     );
   };
 
@@ -98,7 +103,8 @@ export default function Purchase({ items, date, status }: PurchaseProps) {
         <ul className={styles["item-list"]}>
           {products.map((product) => (
             <li key={product.id} className={styles.item}>
-              {product.name} {product.price}₽ x {quantities[product.id]} = {product.price * quantities[product.id]}₽
+              {product.name} {product.price}₽ x {quantities[product.id]} ={" "}
+              {product.price * quantities[product.id]}₽
             </li>
           ))}
         </ul>
