@@ -11,49 +11,65 @@ interface Product {
   price: number;
 }
 
+interface Item {
+  [key: string]: number;
+}
+
 interface PurchaseProps {
-  itemsIds: number[];
+  items: Item[];
   date: Date;
   status: string;
 }
 
-export default function Purchase({ itemsIds, date, status }: PurchaseProps) {
-  const [items, setItems] = useState<Product[]>([]);
-
+export default function Purchase({ items, date, status }: PurchaseProps) {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
   useEffect(() => {
     const fetchItems = async () => {
-      const fetchedItems: Product[] = [];
+      try {
+        const productIds = items.map(item => Object.keys(item)[0]);
+        const fetchedProducts = await Promise.all(
+          productIds.map(async (productId) => {
+            const { data, error } = await supabase
+              .from("products")
+              .select()
+              .eq("id", parseInt(productId))
+              .single();
 
-      for (const itemId of itemsIds) {
-        try {
-          const { data, error } = await supabase
-            .from("products")
-            .select()
-            .eq("id", itemId)
-            .single();
+            if (error) {
+              console.error("Error fetching product:", error);
+              return null;
+            }
+            return data as Product;
+          })
+        );
 
-          if (error) {
-            console.error("Error fetching product:", error);
-          } else if (data) {
-            fetchedItems.push(data);
-          }
-        } catch (error) {
-          console.error("Unexpected error fetching product:", error);
-        }
+        const validProducts = fetchedProducts.filter((product) => product !== null) as Product[];
+        const fetchedQuantities = items.reduce((acc, item) => {
+          const productId = parseInt(Object.keys(item)[0]);
+          acc[productId] = item[Object.keys(item)[0]];
+          return acc;
+        }, {} as { [key: number]: number });
+
+        setProducts(validProducts);
+        setQuantities(fetchedQuantities);
+      } catch (error) {
+        console.error("Unexpected error fetching products:", error);
       }
-
-      setItems(fetchedItems);
     };
 
     fetchItems();
-  }, [itemsIds]);
+  }, [items]);
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + item.price, 0);
+    return products.reduce(
+      (total, product) => total + product.price * (quantities[product.id] || 1),
+      0
+    );
   };
 
   const totalPrice = getTotalPrice();
-  const bonus = totalPrice * 0.05;
+  const bonus = totalPrice * 0.1;
 
   const getStatusImage = (status: string) => {
     switch (status) {
@@ -80,9 +96,9 @@ export default function Purchase({ itemsIds, date, status }: PurchaseProps) {
       <div className={styles.content}>
         <div className={styles.date}>Order {date.toLocaleDateString()}</div>
         <ul className={styles["item-list"]}>
-          {items.map((item) => (
-            <li key={item.id} className={styles.item}>
-              {item.name} {item.price}₽
+          {products.map((product) => (
+            <li key={product.id} className={styles.item}>
+              {product.name} {product.price}₽ x {quantities[product.id]} = {product.price * quantities[product.id]}₽
             </li>
           ))}
         </ul>

@@ -3,9 +3,14 @@
 import React from "react";
 import Purchase from "./Purchase";
 
+interface Item {
+  [key: string]: number;
+}
+
+
 interface Purchase {
   id: number;
-  items: number[];
+  items: Item[];
   date: Date;
   status: string;
 }
@@ -25,7 +30,7 @@ export default function PurchaseHistory({ purchases }: PurchaseHistoryProps) {
           purchases.map((purchase) => (
             <Purchase
               key={purchase.id}
-              itemsIds={purchase.items}
+              items={purchase.items}
               date={new Date(purchase.date)}
               status={purchase.status}
             />
